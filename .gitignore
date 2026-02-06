@@ -1,0 +1,20 @@
+# --- SEGURIDAD (¡AL DRIVE!) ---
+certs/
+*.key
+*.crt
+*.csr
+*.p12
+
+# --- DATOS (¡AL DRIVE!) ---
+*.db
+*.sqlite
+*.sqlite3
+v5_cantera_oro.db
+
+# --- BASURA Y PESO MUERTO (NI GIT NI DRIVE) ---
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+.vscode/
+.idea/
