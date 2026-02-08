@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAR V1 - Satélite Fiscal</title>
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-color: #e0e0e0;
+            --accent-color: #00d4ff;
+        }
+        body {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: var(--text-color);
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            width: 80%;
+            max-width: 800px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 { margin-top: 0; color: var(--accent-color); }
+        .upload-zone {
+            border: 2px dashed var(--glass-border);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .upload-zone:hover { border-color: var(--accent-color); background: rgba(0, 212, 255, 0.05); }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        th, td { padding: 0.8rem; text-align: left; border-bottom: 1px solid var(--glass-border); }
+        th { color: var(--accent-color); }
+        
+        button {
+            background: var(--accent-color);
+            color: #1a1a2e;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+            width: 100%;
+        }
+        button:hover { filter: brightness(1.1); }
+    </style>
+</head>
+<body>
+    <div class="glass-panel">
+        <h1>📡 RAR V1 <span style="font-size:0.6em; opacity:0.7">Remitos Arca & Recolector</span></h1>
+        
+        <div id="drop-zone" class="upload-zone">
+            <p>Arrastra aquí el archivo <b>REPORTE 2.TXT</b></p>
+            <input type="file" id="file-input" style="display:none">
+        </div>
+
+        <div id="preview-area" style="display:none">
+            <h3>Vista Previa del Lote</h3>
+            <table id="items-table">
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Producto</th>
+                        <th>Cant</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <button id="btn-generate">GENERAR REMITO PDF</button>
+        </div>
+        
+        <div id="status-msg" style="margin-top:1rem; color: #ff9"></div>
+    </div>
+
+    <script>
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const previewArea = document.getElementById('preview-area');
+        const itemsTable = document.getElementById('items-table').querySelector('tbody');
+        const statusMsg = document.getElementById('status-msg');
+        let currentData = null;
+
+        dropZone.onclick = () => fileInput.click();
+
+        fileInput.onchange = (e) => processFile(e.target.files[0]);
+        
+        function processFile(file) {
+            statusMsg.innerText = "Analizando...";
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                // Parseo CLIENT-SIDE precario para preview rapido
+                // En realidad deberíamos mandarlo al server
+                const text = e.target.result;
+                const rows = text.split('\n').filter(l => l.includes(','));
+                
+                // Mockup visual rapido
+                itemsTable.innerHTML = '';
+                let items = [];
+                
+                rows.forEach(row => {
+                    let cols = row.split('","'); // Hacky BAS parser
+                    if(cols.length > 5) {
+                        let cliente = cols[3];
+                        let prod = cols[8];
+                        itemsTable.innerHTML += `<tr><td>${cliente}</td><td>${prod}</td><td>1</td></tr>`;
+                        items.push({
+                            id_cliente: cols[2].replace('"',''), 
+                            descripcion: prod.replace('"',''), 
+                            codigo: cols[7],
+                            cantidad: 1
+                        });
+                    }
+                });
+                
+                currentData = items;
+                previewArea.style.display = 'block';
+                statusMsg.innerText = "Archivo cargado. Listo para generar.";
+            };
+            reader.readAsText(file, "ISO-8859-1"); // Latin-1
+        }
+
+        document.getElementById('btn-generate').onclick = async () => {
+            if(!currentData) return;
+            statusMsg.innerText = "Generando PDF...";
+            
+            // Tomamos el primer item para definir el cliente del lote (asumimos 1 remito por reporte por ahora)
+            // TODO: Agrupar por cliente si hay multiples
+            let payload = {
+                id_cliente: currentData[0].id_cliente,
+                items: currentData
+            };
+            
+            try {
+                let res = await fetch('/generate_pdf', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(payload)
+                });
+                let json = await res.json();
+                
+                if(json.error) {
+                    statusMsg.innerText = "ERROR: " + json.error;
+                    statusMsg.style.color = "#ff5555";
+                } else {
+                    statusMsg.innerText = "¡Remito Generado!";
+                    statusMsg.style.color = "#55ff55";
+                    window.open(json.pdf_url, '_blank');
+                }
+            } catch(e) {
+                statusMsg.innerText = "Error de Red";
+            }
+        };
+    </script>
+</body>
+</html>
