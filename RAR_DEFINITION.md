@@ -59,9 +59,10 @@ Al retomar RAR, recuerda:
 *   **El PDF es la meta:** Tomy necesita el papel/PDF para que el camión salga. La UX es secundaria, la validez fiscal es primaria.
 *   **Pathing:** RAR usa rutas absolutas calculadas (`os.path.dirname`) para ser portable. No romper esto.
 
-**Firma Digital:**
-*Gy V14 "Vanguard" - 2026-02-08*
+**Identidad Visual:** `base_remito_v1.png` instituida (Smart Tinting v1.0).
+**Firma Digital:** `certs/` preparado para tramitación.
 
+*Gy V14 "Vanguard" - 2026-02-10*
 ---
 
 ## 5. Vision Board: RAR Fase 2 (Vitaminizada)

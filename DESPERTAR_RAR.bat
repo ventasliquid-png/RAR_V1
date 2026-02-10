@@ -22,7 +22,7 @@ echo [Generando Prompt de Activacion...]
 echo.
 
 :: PROMPT DE ACTIVACION
-echo SISTEMA: RAR V1. 1) CONTEXTO: Leer "_RAR/BOOTLOADER.md" y "RAR_DEFINITION.md". 2) MISION: Asumir control del modulo satelital. 3) ESTADO: Operativo. Reportar a Arquitecta RAR_2. | clip
+echo SISTEMA: RAR V1. AGENTE: Gy (Antigravity). ROL: Ejecutor Tecnico. 1) CONTEXTO: Leer "_RAR/BOOTLOADER.md" y "RAR_DEFINITION.md". 2) MISION: Asumir control del modulo satelital. 3) ESTADO: Operativo. Reportar a Arquitecta RAR_2. | clip
 
 echo [LISTO] Orden copiada al portapapeles.
 echo 1. Abre Antigravity.
