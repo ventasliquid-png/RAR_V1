@@ -59,19 +59,18 @@ Al retomar RAR, recuerda:
 *   **El PDF es la meta:** Tomy necesita el papel/PDF para que el camión salga. La UX es secundaria, la validez fiscal es primaria.
 *   **Pathing:** RAR usa rutas absolutas calculadas (`os.path.dirname`) para ser portable. No romper esto.
 
-**Identidad Visual:** `base_remito_v1.png` instituida (Smart Tinting v1.0).
+**Identidad Visual:** `base_remito_v1.png` instituida (Smart Tinting v1.0, White-out V2).
 **Firma Digital:** `certs/` preparado para tramitación.
+**Motor de Emisión:** `remito_engine.py` V2 (ZapfDingbats, Capas, Pie Dinámico).
 
-*Gy V14 "Vanguard" - 2026-02-10*
----
+*Gy V14 "Vanguard" - 2026-02-11*
 
-## 5. Vision Board: RAR Fase 2 (Vitaminizada)
-> **STATUS:** CONCEPTUAL
-> **STRATEGY:** "El Dato Único"
+## 5. Vision Board: RAR Fase 2 (DESPLEGADA)
+> **STATUS:** OPERATIVO (PRODUCCIÓN)
+> **STRATEGY:** "Bucle Infinito"
 
-El objetivo es no cargar dos veces.
-1.  **Carga Unificada:** Tomy carga items + cantidades **+ PRECIOS** (aunque el remito no los muestre).
+1.  **Carga Unificada:** `launch_protocol.py` orquesta la carga de Clientes, Items y Datos Fiscales.
 2.  **Output Bifurcado:**
-    *   **Botón A (Remito):** Genera PDF con Cantidades. Oculta Precios. (Para Logística).
-    *   **Botón B (Factura):** Usa la MISMA carga. Revela Precios. Impacta en WSFEv1. (Para Cobranzas).
+    *   **Botón A (Remito):** Genera PDF con Cantidades (Original, Dup, Trip). Oculta Precios.
+    *   **Botón B (Factura):** Pendiente de linkear con WSFEv1.
 

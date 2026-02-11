@@ -1,0 +1,40 @@
+[2026-02-11 12:21:12] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770823272"}
+[2026-02-11 12:21:12] [TRA_RES] {"service": "ws_sr_padron_a13", "token_len": 732}
+[2026-02-11 12:21:12] [PADRON_REQ] {"cuit": "30581050301"}
+[2026-02-11 12:21:13] [PADRON_RES] {"status": "ok"}
+[2026-02-11 12:27:05] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770823625"}
+[2026-02-11 12:27:06] [TRA_RES] {"service": "ws_sr_padron_a13", "token_len": 732}
+[2026-02-11 12:27:06] [PADRON_REQ] {"cuit": "30581050301"}
+[2026-02-11 12:27:06] [PADRON_RES] {"status": "ok"}
+[2026-02-11 12:28:56] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770823736"}
+[2026-02-11 12:28:57] [TRA_RES] {"service": "ws_sr_padron_a13", "token_len": 732}
+[2026-02-11 12:29:39] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770823779"}
+[2026-02-11 12:29:40] [TRA_RES] {"service": "ws_sr_padron_a13", "token_len": 732}
+[2026-02-11 12:30:55] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770823855"}
+[2026-02-11 12:30:55] [TRA_RES] {"service": "ws_sr_padron_a13", "token_len": 732}
+[2026-02-11 12:30:55] [PADRON_REQ] {"cuit": "30581050301"}
+[2026-02-11 12:30:56] [PADRON_RES] {"status": "ok"}
+[2026-02-11 12:38:09] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770824289"}
+[2026-02-11 12:38:10] [TRA_RES] {"service": "ws_sr_padron_a13", "token_len": 732}
+[2026-02-11 12:38:10] [PADRON_REQ] {"cuit": "30581050301"}
+[2026-02-11 12:38:10] [PADRON_RES] {"status": "ok"}
+[2026-02-11 13:11:53] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770826312"}
+[2026-02-11 13:11:53] [TRA_RES] {"service": "ws_sr_padron_a13", "token_len": 732}
+[2026-02-11 13:11:53] [PADRON_REQ] {"cuit": "30581050301"}
+[2026-02-11 13:11:54] [PADRON_RES] {"status": "ok"}
+[2026-02-11 13:30:19] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770827419"}
+[2026-02-11 13:30:20] [TRA_RES] {"service": "ws_sr_padron_a13", "token_len": 728}
+[2026-02-11 13:30:20] [PADRON_REQ] {"cuit": "30581050301"}
+[2026-02-11 13:30:20] [PADRON_RES] {"status": "ok"}
+[2026-02-11 14:16:38] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770830197"}
+[2026-02-11 14:16:38] [TRA_RES] {"service": "ws_sr_padron_a13", "token_len": 732}
+[2026-02-11 14:16:38] [PADRON_REQ] {"cuit": "30581050301"}
+[2026-02-11 14:16:39] [PADRON_RES] {"status": "ok"}
+[2026-02-11 16:33:51] [WSMTXCA_REQ_STUB] {"cuit": "30581050301", "items": [{"codigo": "SKU-1000", "descripcion": "TOALLA BLANCA SUPER CORTA CAJA POR 2.500 U", "cantidad": "1", "unidad": "UN", "sku": 1000}]}
+[2026-02-11 16:33:51] [WSMTXCA_RES_STUB] {"cae": "74577828108377", "vto": "20260221"}
+[2026-02-11 17:40:31] [WSMTXCA_REQ_STUB] {"cuit": "30581050301", "items": [{"codigo": "SKU-1000", "descripcion": "TOALLA BLANCA SUPER CORTA CAJA POR 2.500 U", "cantidad": "1", "unidad": "UN", "sku": 1000}]}
+[2026-02-11 17:40:31] [WSMTXCA_RES_STUB] {"cae": "74956663566197", "vto": "20260221"}
+[2026-02-11 17:45:17] [WSMTXCA_REQ_STUB] {"cuit": "30581050301", "items": [{"codigo": "SKU-1000", "descripcion": "TOALLA BLANCA SUPER CORTA CAJA POR 2.500 U", "cantidad": "1", "unidad": "UN", "sku": 1000}]}
+[2026-02-11 17:45:17] [WSMTXCA_RES_STUB] {"cae": "74708585733056", "vto": "20260221"}
+[2026-02-11 17:59:32] [WSMTXCA_REQ_STUB] {"cuit": "30581050301", "items": [{"codigo": "SKU-1000", "descripcion": "TOALLA BLANCA SUPER CORTA CAJA POR 2.500 U", "cantidad": "1", "unidad": "UN", "sku": 1000}]}
+[2026-02-11 17:59:32] [WSMTXCA_RES_STUB] {"cae": "74388385293905", "vto": "20260221"}

@@ -12,8 +12,15 @@ CERT_PATH = os.path.join(BASE_DIR, "certs", "certificado.crt")
 KEY_PATH = os.path.join(BASE_DIR, "certs", "privada.key")
 URL_WSAA = "https://wsaa.afip.gov.ar/ws/services/LoginCms?wsdl"
 URL_PADRON = "https://aws.afip.gov.ar/sr-padron/webservices/personaServiceA13?wsdl"
+URL_WSMTXCA = "https://serviciosjava.afip.gov.ar/wsmtxca/services/MTXCAService?wsdl"
+LOG_PATH = os.path.join(BASE_DIR, "arca_trace.log")
 
-def obtener_token():
+def log_arca_trace(tipo, datos):
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    with open(LOG_PATH, "a") as f:
+        f.write(f"[{timestamp}] [{tipo}] {json.dumps(datos, default=str)}\n")
+
+def obtener_token(service="ws_sr_padron_a13"):
     rutas = [r"C:\Program Files\Git\usr\bin\openssl.exe", r"C:\Program Files\Git\mingw64\bin\openssl.exe", r"C:\Windows\System32\openssl.exe"]
     openssl = next((r for r in rutas if os.path.exists(r)), None)
     
@@ -28,11 +35,11 @@ def obtener_token():
     etree.SubElement(h, "uniqueId").text = str(int(now.timestamp()))
     etree.SubElement(h, "generationTime").text = (now - timedelta(minutes=10)).strftime("%Y-%m-%dT%H:%M:%S")
     etree.SubElement(h, "expirationTime").text = (now + timedelta(minutes=10)).strftime("%Y-%m-%dT%H:%M:%S")
-    etree.SubElement(tra, "service").text = "ws_sr_padron_a13"
+    etree.SubElement(tra, "service").text = service
     
     # Archivos temporales con ruta absoluta para evitar problemas de CWD
-    temp_xml = os.path.join(BASE_DIR, "temp_auth.xml")
-    temp_cms = os.path.join(BASE_DIR, "temp_auth.cms")
+    temp_xml = os.path.join(BASE_DIR, f"temp_auth_{service}.xml")
+    temp_cms = os.path.join(BASE_DIR, f"temp_auth_{service}.cms")
 
     with open(temp_xml, "wb") as f: f.write(etree.tostring(tra))
     
@@ -49,9 +56,16 @@ def obtener_token():
         if os.path.exists(temp_cms): os.remove(temp_cms)
     except: pass
     
+    log_arca_trace("TRA_REQ", {"service": service, "uniqueId": str(int(now.timestamp()))})
+    
     res = Client(URL_WSAA).service.loginCms(cms)
     xml = etree.fromstring(res.encode())
-    return xml.find(".//token").text, xml.find(".//sign").text
+    
+    token = xml.find(".//token").text
+    sign = xml.find(".//sign").text
+    
+    log_arca_trace("TRA_RES", {"service": service, "token_len": len(token)})
+    return token, sign
 
 def get_datos_afip(cuit_raw):
     """
@@ -63,14 +77,34 @@ def get_datos_afip(cuit_raw):
         return {"error": "CUIT inválido (longitud incorrecta)"}
 
     try:
-        token, sign = obtener_token()
+        token, sign = obtener_token("ws_sr_padron_a13")
+        
+        log_arca_trace("PADRON_REQ", {"cuit": cuit})
         res = Client(URL_PADRON).service.getPersona(token, sign, CUIT_PROPIO, cuit)
+        log_arca_trace("PADRON_RES", {"status": "ok"}) # No logueamos todo el payload por privacidad/tamaño
         
         datos_dict = serialize_object(res)
         return extraer_datos_completos(datos_dict)
         
     except Exception as e:
+        log_arca_trace("PADRON_ERR", {"error": str(e)})
         return {"error": str(e)}
+
+def solicitar_cae(remito_data):
+    """
+    STUB: Simula el envío a WSMTXCA y devuelve un CAE simulado si todo está bien.
+    En Fase 3 se implementará la conexión real SOAP.
+    """
+    log_arca_trace("WSMTXCA_REQ_STUB", remito_data)
+    
+    # Simulación de respuesta exitosa
+    import random
+    cae = f"74{random.randint(100000000000, 999999999999)}"
+    vto = (datetime.now() + timedelta(days=10)).strftime("%Y%m%d")
+    
+    log_arca_trace("WSMTXCA_RES_STUB", {"cae": cae, "vto": vto})
+    
+    return {"cae": cae, "vto_cae": vto, "resultado": "A"}
 
 if __name__ == "__main__":
     print("=== MÓDULO DE CONEXIÓN BLINDADA (TEST) ===")
