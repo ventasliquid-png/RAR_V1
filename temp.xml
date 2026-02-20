@@ -1,0 +1,1 @@
+<loginTicketRequest version="1.0"><header><source>serialNumber=CUIT 20132967572,cn=RAR_V5</source><destination>cn=wsaa,o=afip,c=ar,serialNumber=CUIT 33693450239</destination><uniqueId>1771621271</uniqueId><generationTime>2026-02-20T17:51:11</generationTime><expirationTime>2026-02-20T18:11:11</expirationTime></header><service>wsmtxca</service></loginTicketRequest>

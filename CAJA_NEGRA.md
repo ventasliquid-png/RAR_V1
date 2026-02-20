@@ -1,36 +1,34 @@
-# 🕋 CAJA NEGRA: RAR V1 (Satélite Fiscal)
+# CAJA NEGRA: ESTADO DEL SISTEMA
 
-> **ESTADO:** OPERATIVO (FASE 2 - PRODUCCIÓN & EMISIÓN)
-> **ÚLTIMA ACTUALIZACIÓN:** 2026-02-11
-> **GUARDIÁN:** Gy (Antigravity)
+## MÓDULOS ACTIVOS
+- **RAR Core (Python):** ESTABLE.
+- **Motor PDF (ReportLab):** ESTABLE.
+- **Motor Remito ARCA:** OPERATIVO.
+- **Ingesta PDF (Backend/Remitos):** OPERATIVO (Nuevo).
+- **Backend V5 (FastAPI):** 🟢 ESTABLE (Recuperación de ORM y persistencia ARCA OK).
 
-## 1. MÓDULOS ACTIVOS
+## DEUDA TÉCNICA CRÍTICA
+- [x] Resolver Circular Import / Model Registry en V5 Backend.
+- [x] Implementar Puente Multi-Identidad (CUIT 20/30).
+- [x] Corregir persistencia de Infiltración Vanguard.
 
-### A. Identidad & Criptografía (`certs/`)
-*   **Estado:** ✅ ACTIVADO
-*   **Producción:** `certificado.crt` + `privada.key` instalados y validados.
-*   **Conexión:** `Conexion_Blindada.py` operando en modo PRODUCCIÓN (WSAA).
+> **ESTADO GLOBAL:** 🟢 OPERATIVO (Backend V5 Restaurado)
 
-### B. Diseño & Maquetación (`remito_engine.py`)
-*   **Estado:** 🟢 V2 ESTABLE
-*   **Motor:** `fpdf2` con manejo de capas (Watermarks, White-outs).
-*   **Estética:** Fuente `ZapfDingbats` para símbolos (Flor/Estrella).
-*   **Layout:** Coordenadas BAS calibradas + Pie de página dinámico (Notas/Bultos).
+| MÓDULO | ESTADO | NOTAS TÉCNICAS |
+| :--- | :--- | :--- |
+| **Identidad (WSAA)** | 🟢 OPERATIVO | Puente Multi-Identidad (2013-3071) activo. |
+| **Conexión (WSMTXCA)** | 🟢 OPERATIVO | Token OK. Comunicación fiscal validada. |
+| **Punto de Venta** | 🟡 PENDIENTE | Pendiente delegación REAR (Inhibido por administrativo). |
+| **Buscador CUIT** | 🟢 OPERATIVO | Restaurado vía Identidad 20132967572. |
+| **Motor PDF (ARCA)** | 🟢 LISTO | `remito_arca_engine.py` genera PDF+QR. Falta CAE real. |
+| **Backend V5** | 🟢 ESTABLE | `pilot.db` 100% íntegra (Threshold 33). |
+| **Protocolo Omega** | 🟢 ACTIVO | Procedimiento de cierre en curso. |
 
-### C. Controlador de Misión (`launch_protocol.py`)
-*   **Estado:** 🟢 ACTIVO
-*   **Flujo:** Bucle Infinito (Múltiples emisiones).
-*   **Features:**
-    *   Búsqueda de Clientes (Nombre/CUIT).
-    *   Edición de Notas/Valor/Bultos.
-    *   Seguridad de Emisión (Confirmación de N°).
-    *   Draft System (Recuperación de fallos).
+## ALERTAS ACTIVAS
+1.  **[CRÍTICO] Error Burocrático:** Falta DDJJ Ganancias 2024 impide alta de PV.
+2.  **[SOLUCIONADO] Backend Crash:** Inconsistencia de DB resuelta via Swap.
 
-### D. Cantera de Datos (`v5_cantera_oro.db`)
-*   **Estado:** 🟢 EVOLUCIONADA (Schema V2)
-*   **Mejoras:** Soporte para SKUs, Unidades normalizadas y Referencias de Factura.
-
-## 2. DEUDA TÉCNICA / NEXT STEPS
-1.  **Refactorización:** Mover lógica de negocio de `launch_protocol.py` a `rar_core.py` para aligerar el controlador.
-2.  **Backup:** Implementar rotación automática de backups de la DB.
-3.  **UI:** Evaluar migración a interfaz web (Flask/FastAPI) para fase 3.
+## ÚLTIMA MODIFICACIÓN
+*   **Fecha:** 20/02/2026
+*   **Agente:** Antigravity / Gy V12
+*   **Razón:** Estabilización Crítica de Backend y Puente Multi-Identidad.

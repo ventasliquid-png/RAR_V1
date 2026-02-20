@@ -1,64 +1,72 @@
-# 📓 BITÁCORA DE DESARROLLO - RAR V1
 
-## 📅 SESIÓN: 2026-02-10
+### FECHA: 12/02/2026 - SESIÓN DE IMPLEMENTACIÓN WSMTXCA (FASE 2)
 
-### 🎯 OBJETIVOS
-1.  **Protocolo ALFA:** Activación del Satélite y reconocimiento de identidad (Gy).
-2.  **Script 1 (Identidad Fiscal):** Generación de claves criptográficas.
-3.  **Script 1 (Diseño):** Creación de la plantilla base para remitos (`base_remito_v1.png`).
+**ESTADO ACTUAL:** 🛑 BLOQUEADO (ADMINISTRATIVO - NO TÉCNICO)
 
-### 🛠️ TAREAS REALIZADAS
-*   **Protocolo ALFA:**
-    *   Se modificó `DESPERTAR_RAR.bat` para incluir identidad de Gy.
-    *   Se leyó contexto (`BOOTLOADER`, `DEFINITION`, `PERSONA`).
-*   **Criptografía:**
-    *   Se generó `certs/produccion_liquid.key` (2048 bits).
-    *   Se generó `certs/produccion_liquid.csr` con datos de SONIDO LIQUIDO S.R.L.
-*   **Diseño (Iterativo):**
-    *   *Intento 1:* Recoloreado simple + Injerto. (Rechazado: Logo tapaba dirección).
-    *   *Intento 2:* Limpieza y redibujado de líneas. (Rechazado: Pérdida de calidad/"arratonado").
-    *   *Intento 3 (Final):* **Smart Tinting**. Uso de `ImageOps.colorize` global para preservar anti-aliasing + Máscara de Saturación para proteger el logo. (Aprobado).
-    *   **Resultado:** `base_remito_v1.png` instituido.
+**ACTIVIDADES REALIZADAS:**
+1.  **Diagnóstico de Identidad:** Se detectó que el usuario operaba bajo CUIT PERSONAL (20...) en lugar de CUIT EMPRESA (30...). Esto causaba errores de permisos y falta de opciones en AFIP.
+2.  **Corrección de Contexto:** Se redirigió la operación al CUIT DE LA EMPRESA "SONIDO LIQUIDO SRL".
+3.  **Configuración de Puntos de Venta (PV):**
+    *   Se intentó crear PV con sistema "Remito Electrónico Web Services" (PV 7). Resultado: Error 1500 (Rechazo WSMTXCA).
+    *   Se intentó crear PV con sistema "RECE para aplicativo y web services" (PV 9). Resultado: Error 1500.
+    *   **DIAGNOSTICO:** El sistema WSMTXCA requiere un PV específico ("Codificación de Productos").
+4.  **Investigación de Regímenes:**
+    *   Se identificó que falta el empadronamiento en "Factura Electrónica con Detalle" dentro del servicio "Regímenes de Facturación y Registración (REAR/RECE/RFI)".
+5.  **BLOQUEO FINAL:**
+    *   Al intentar el empadronamiento REAR, AFIP bloqueó el trámite por "Falta de presentación de DDJJ Ganancias 202---
 
-### ⚠️ INCIDENCIAS / BLOQUEOS
-*   **Diseño:** La limpieza de ruido y redibujado vectorial (morphological filters) degradó la calidad del texto escaneado. Se optó por un enfoque de tintado cromático (cambio de espectro de color) que preserva la suavidad original del escaneo.
-*   **AFIP:** Falta tramitar el Certificado Digital y el Punto de Venta para avanzar a la Fase 2 (Emisión REAL).
+### FECHA: 20/02/2026 - SESIÓN DE ESTABILIZACIÓN CRÍTICA Y PUENTE MULTI-IDENTIDAD
 
-### 📝 NOTAS TÉCNICAS
-*   El script `advanced_recolor.py` es el canon actual para regenerar la plantilla si cambia el escaneo original.
-*   La clave privada NO DEBE compartirse.
+**ESTADO ACTUAL:** 🟢 OPERATIVO GOLD
 
-## 📅 SESIÓN: 2026-02-11
+**EVENTO:** Rescate de Backend post-caída sistémica y restauración de comunicación fiscal.
 
-### 🎯 OBJETIVOS
-1.  **Protocolo ALFA:** Asumir control y reportar estado operativo.
-2.  **Fase 2 (Producción):** Activar entorno de emisión real confirmando certificado y actualizando módulos críticos.
+**ACTIVIDADES REALIZADAS:**
+1.  **Recuperación ORM:** Se identificó que modelos clave (`contactos`, `remitos`) no estaban registrados en el registry de SQLAlchemy en `main.py`, causando errores 500 al resolver relaciones de `Cliente`. Se aplicó registro explícito.
+2.  **Ajuste de Integridad:** El umbral de `check_db_integrity.py` se movió a **33 registros** para reflejar la realidad de la base saneada.
+3.  **Puente Multi-Identidad (Hito):**
+    *   Se diagnosticó que el permiso de Padrón A13 reside en el CUIT 20132967572, mientras que MTXCA reside en el CUIT 30715603973.
+    *   Se refactorizó `Conexion_Blindada.py` para alternar certificados dinámicamente según el servicio solicitado.
+4.  **UX Vanguard:** Implementación del **Comparison Overlay** para validación AFIP visual, evitando sobreescrituras accidentales.
+5.  **Fix Persistencia:** Se habilitó el mapeo y guardado de domicilios fiscales para clientes existentes (Caso Biotenk), corrigiendo el bypass de actualización en el frontend.
 
-### 🛠️ TAREAS REALIZADAS
-*   **Validación Fiscal (Producción):**
-    *   Ejecución de `test_afip_connection.py`.
-    *   **Resultado:** El certificado `certificado.crt` (junto con `privada.key`) es válido para **PRODUCCIÓN**.
-    *   *Nota:* Se descartó `produccion_liquid.key` por no corresponder al certificado instalado.
-*   **Evolución DB (Cantera de Oro):**
-    *   `v5_cantera_oro.db` actualizada.
-    *   Agregado: Columna `unidad_medida` en `cantera_productos`.
-    *   Creado: Tabla `remitos` con columna `referencia_factura`.
-*   **Módulo Tomás (Ingesta):**
-    *   Implementado `ingesta_bas.py` con lógica de "Consistencia Proactiva".
-    *   Probado caso de uso "Guantes" $\rightarrow$ Detección de item nuevo $\rightarrow$ Solicitud de Unidad.
-*   **Motor Impresión:**
-    *   Reescrito `remito_engine.py` usando `fpdf2` y diseño en capas.
-    *   Integrado `base_remito_v1.png`.
-    *   Configurado bucle de 3 copias (Original, Duplicado, Triplicado) y Marca de Agua para previews.
+**ERRORES TÉCNICOS RESUELTOS:**
+*   `NameError` en `clientes/router.py` (VinculoComercialUpdate).
+*   `ImportError: zeep` en entorno virtual del bridge.
+*   `Computador No Autorizado` (Resuelto vía Multi-Identity).
 
-### 🚀 FASE 2: DESPLIEGUE (Feedback Loop)
-*   **Refinamiento UX/UI:**
-    *   **Búsqueda de Clientes:** Implementado motor de búsqueda SQL (`LIKE`) por Razón Social o CUIT.
-    *   **Campos Faltantes:** Agregado soporte display/print para `Bultos`, `Valor Declarado` y `Observaciones` (Pie de página).
-    *   **Workflow:** Transformado `launch_protocol.py` en bucle infinito para permitir múltiples emisiones sin reinicio.
-*   **Estética & Pulido:**
-    *   **Limpieza:** Implementación de "White-outs" (Parches blancos) para ocultar elementos obsoletos de la plantilla base.
-    *   **Tipografía:** Uso de fuente `ZapfDingbats` (Glifo 'M' = ✲) para indicadores limpia de copias.
-*   **Seguridad Operativa:**
-    *   **Inputs Blindados:** Reemplazo de comandos de texto por selectores numéricos (`1=SI`, `9=NO`).
-    *   **Confirmación de Tiro:** Paso de verificación explícita del N° de Remito antes de la emisión final.
+**PRÓXIMOS PASOS:**
+1.  Finalizar Protocolo Omega.
+2.  Delegar Padrón A13 al CUIT 30 para simplificar infraestructura futura.
+
+**ERRORES TÉCNICOS RESUELTOS:**
+*   `debug_mtxca.py`: Implementado escáner de PVs, confirmó rechazos en PVs 7 y 9.
+*   `remito_arca_engine.py`: Motor PDF v2 listo, validado con datos dummy.
+*   **Certificados Digitales:** Validados y funcionando correctamente para `wsmtxca` en producción.
+
+**TAREAS PENDIENTES (POST-DESBLOQUEO):**
+1.  Regularizar situación impositiva (Contador).
+2.  Empadronar en REAR ("Factura con Detalle").
+3.  Crear PV "Codificación de Productos".
+4.  Ejecutar emisión de prueba con `Conexion_Blindada.py`.
+
+---
+
+### FECHA: 19/02/2026 - SESIÓN DE RECUPERACIÓN V5 Y REMITO MANUAL
+
+**ESTADO ACTUAL:** 🟢 OPERATIVO (Backend Restaurado)
+
+**INCIDENTE:** Colapso del Backend V5 (Error 500) por inconsistencia de Base de Datos (`pilot.db` vs `pilot_v5x.db`).
+
+**ACCIONES CORRECTIVAS:**
+1.  **Diagnóstico:** Se identificó que el entorno cargaba `pilot.db` (obsoleta) ignorando configuración.
+2.  **Opción Nuclear:** Se reemplazó `pilot.db` por la versión saneada `pilot_v5x.db` (Schema V7). Problema resuelto de raíz.
+3.  **Remito de Contingencia:** Se generó PDF manual para "LAVIMAR" extrayendo datos de factura y sorteando bug de librerías gráficas (`PNG` -> `JPG`).
+
+**LECCIONES APRENDIDAS:**
+*   **Persistencia de Entorno:** Los procesos "zombies" de Python pueden mantener conexiones a bases viejas. `taskkill` es mandatorio antes de asumir cambios de config.
+*   **Estrategia Git:** Se debe implementar una **RAMA DE RESPALDO** automática al iniciar Protocolo Omega para proteger la integridad de los datos durante refactorizaciones agresivas.
+
+**PRÓXIMOS PASOS:**
+1.  Implementar `PDF Parsing` automático (Ingesta de Facturas).
+2.  Formalizar la estrategia de Ramas de Respaldo en `PROTOCOLO_OMEGA.md`.

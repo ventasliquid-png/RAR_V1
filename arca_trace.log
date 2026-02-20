@@ -38,3 +38,211 @@
 [2026-02-11 17:45:17] [WSMTXCA_RES_STUB] {"cae": "74708585733056", "vto": "20260221"}
 [2026-02-11 17:59:32] [WSMTXCA_REQ_STUB] {"cuit": "30581050301", "items": [{"codigo": "SKU-1000", "descripcion": "TOALLA BLANCA SUPER CORTA CAJA POR 2.500 U", "cantidad": "1", "unidad": "UN", "sku": 1000}]}
 [2026-02-11 17:59:32] [WSMTXCA_RES_STUB] {"cae": "74388385293905", "vto": "20260221"}
+[2026-02-12 12:29:41] [TRA_REQ] {"service": "wsfe", "uniqueId": "1770910181"}
+[2026-02-12 12:30:11] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770910211"}
+[2026-02-12 12:30:12] [TRA_RES] {"service": "ws_sr_padron_a13", "token_len": 732}
+[2026-02-12 12:30:12] [TRA_REQ] {"service": "wsfe", "uniqueId": "1770910212"}
+[2026-02-12 12:43:41] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770911020"}
+[2026-02-12 12:43:41] [TRA_RES] {"service": "ws_sr_padron_a13", "token_len": 732}
+[2026-02-12 12:43:41] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770911021"}
+[2026-02-12 13:08:41] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770912521"}
+[2026-02-12 13:08:42] [TRA_RES] {"service": "ws_sr_padron_a13", "token_len": 732}
+[2026-02-12 13:08:42] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770912522"}
+[2026-02-12 13:15:09] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770912909"}
+[2026-02-12 13:15:09] [TRA_RES] {"service": "ws_sr_padron_a13", "token_len": 732}
+[2026-02-12 13:15:09] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770912909"}
+[2026-02-12 13:19:45] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770913185"}
+[2026-02-12 13:19:46] [TRA_RES] {"service": "ws_sr_padron_a13", "token_len": 732}
+[2026-02-12 13:19:46] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770913186"}
+[2026-02-12 13:32:57] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770913977"}
+[2026-02-12 13:32:58] [TRA_RES] {"service": "ws_sr_padron_a13", "token_len": 732}
+[2026-02-12 13:32:58] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770913978"}
+[2026-02-12 13:37:26] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770914246"}
+[2026-02-12 13:37:27] [TRA_RES] {"service": "ws_sr_padron_a13", "token_len": 732}
+[2026-02-12 13:37:27] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770914247"}
+[2026-02-12 13:39:38] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770914378"}
+[2026-02-12 13:41:48] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770914508"}
+[2026-02-12 13:43:59] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770914639"}
+[2026-02-12 13:46:09] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770914769"}
+[2026-02-12 13:48:20] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770914900"}
+[2026-02-12 13:50:31] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770915031"}
+[2026-02-12 13:52:41] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770915161"}
+[2026-02-12 13:54:52] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770915292"}
+[2026-02-12 13:57:02] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770915422"}
+[2026-02-12 14:00:44] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770915644"}
+[2026-02-12 14:00:44] [TRA_RES] {"service": "ws_sr_padron_a13", "token_len": 732}
+[2026-02-12 14:00:45] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770915644"}
+[2026-02-12 14:15:06] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770916505"}
+[2026-02-12 14:15:06] [TRA_RES] {"service": "ws_sr_padron_a13", "token_len": 732}
+[2026-02-12 14:15:06] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770916506"}
+[2026-02-12 14:20:07] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770916807"}
+[2026-02-12 14:20:31] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770916831"}
+[2026-02-12 14:20:32] [TRA_RES] {"service": "ws_sr_padron_a13", "token_len": 732}
+[2026-02-12 14:20:32] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770916832"}
+[2026-02-12 14:25:18] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770917117"}
+[2026-02-12 14:25:42] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770917142"}
+[2026-02-12 14:30:28] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770917428"}
+[2026-02-12 14:30:53] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770917453"}
+[2026-02-12 14:35:39] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770917739"}
+[2026-02-12 14:36:03] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770917763"}
+[2026-02-12 14:38:54] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770917934"}
+[2026-02-12 14:39:05] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770917945"}
+[2026-02-12 14:39:17] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770917957"}
+[2026-02-12 14:39:28] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770917968"}
+[2026-02-12 14:40:02] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770918002"}
+[2026-02-12 14:40:03] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770918003"}
+[2026-02-12 14:40:03] [TRA_RES] {"service": "wsmtxca", "token_len": 720}
+[2026-02-12 14:40:04] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1770918004"}
+[2026-02-12 14:40:04] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770918004"}
+[2026-02-12 14:40:05] [TRA_RES] {"service": "wsmtxca", "token_len": 720}
+[2026-02-12 14:41:14] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770918074"}
+[2026-02-12 14:43:44] [WSMTXCA_REQ_START] {"cuit_cliente": "30581050301"}
+[2026-02-12 14:43:44] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770918224"}
+[2026-02-12 14:43:45] [TRA_RES] {"service": "wsmtxca", "token_len": 720}
+[2026-02-12 14:43:45] [WSMTXCA_LAST_CMP_ERR] {"error": "La firma no corresponde al token enviado."}
+[2026-02-12 14:43:45] [WSMTXCA_PAYLOAD] {"codigoTipoComprobante": 91, "numeroPuntoVenta": 5, "numeroComprobante": 1, "fechaEmision": "2026-02-12", "codigoTipoDocumento": 80, "numeroDocumento": 30581050301, "importeTotal": 0, "codigoMoneda": "PES", "cotizacionMoneda": 1, "arrayItems": {"item": [{"unidadesMtx": 50, "codigoMtx": "0000000000000", "codigoLeyenda": "", "descripcion": "Item", "cantidad": 50.0, "codigoUnidadMedida": 7, "precioUnitario": 0, "importeItem": 0}]}}
+[2026-02-12 14:43:45] [WSMTXCA_CRITICAL_ERR] {"error": "{http://impl.service.wsmtxca.afip.gov.ar/service/}ItemType() got an unexpected keyword argument 'codigoLeyenda'. Signature: `unidadesMtx: xsd:int, codigoMtx: xsd:string, codigo: xsd:string, descripcion: xsd:string, cantidad: {http://impl.service.wsmtxca.afip.gov.ar/service/}DecimalSimpleType, codigoUnidadMedida: xsd:short, precioUnitario: {http://impl.service.wsmtxca.afip.gov.ar/service/}DecimalSimpleType, importeBonificacion: {http://impl.service.wsmtxca.afip.gov.ar/service/}DecimalSimpleType, codigoCondicionIVA: xsd:short, importeIVA: {http://impl.service.wsmtxca.afip.gov.ar/service/}ImporteSubtotalSimpleType, importeItem: {http://impl.service.wsmtxca.afip.gov.ar/service/}ImporteSubtotalSimpleType`"}
+[2026-02-12 14:45:09] [WSMTXCA_REQ_START] {"cuit_cliente": "30581050301"}
+[2026-02-12 14:45:10] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770918309"}
+[2026-02-12 14:45:10] [TRA_RES] {"service": "wsmtxca", "token_len": 720}
+[2026-02-12 14:45:11] [WSMTXCA_LAST_CMP_ERR] {"error": "La firma no corresponde al token enviado."}
+[2026-02-12 14:45:11] [WSMTXCA_PAYLOAD] {"codigoTipoComprobante": 91, "numeroPuntoVenta": 5, "numeroComprobante": 1, "fechaEmision": "2026-02-12", "codigoTipoDocumento": 80, "numeroDocumento": 30581050301, "importeTotal": 0, "codigoMoneda": "PES", "cotizacionMoneda": 1, "arrayItems": {"item": [{"unidadesMtx": 50, "codigoMtx": "0000000000000", "codigo": "TP001", "descripcion": "Item", "cantidad": 50.0, "codigoUnidadMedida": 7, "precioUnitario": 0.0, "importeBonificacion": 0.0, "codigoCondicionIVA": 1, "importeIVA": 0.0, "importeItem": 0.0}]}}
+[2026-02-12 14:45:11] [WSMTXCA_CRITICAL_ERR] {"error": "Missing element importeSubtotal (autorizarComprobanteRequest.comprobanteCAERequest.importeSubtotal)"}
+[2026-02-12 14:46:25] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770918385"}
+[2026-02-12 14:46:36] [WSMTXCA_REQ_START] {"cuit_cliente": "30581050301"}
+[2026-02-12 14:46:36] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770918396"}
+[2026-02-12 14:46:36] [TRA_RES] {"service": "wsmtxca", "token_len": 720}
+[2026-02-12 14:46:37] [WSMTXCA_LAST_CMP_ERR] {"error": "La firma no corresponde al token enviado."}
+[2026-02-12 14:46:37] [WSMTXCA_PAYLOAD] {"codigoTipoComprobante": 91, "numeroPuntoVenta": 5, "numeroComprobante": 1, "fechaEmision": "2026-02-12", "codigoTipoDocumento": 80, "numeroDocumento": 30581050301, "importeTotal": 0, "importeSubtotal": 0, "codigoMoneda": "PES", "cotizacionMoneda": 1, "arrayItems": {"item": [{"unidadesMtx": 50, "codigoMtx": "0000000000000", "codigo": "TP001", "descripcion": "Item", "cantidad": 50.0, "codigoUnidadMedida": 7, "precioUnitario": 0.0, "importeBonificacion": 0.0, "codigoCondicionIVA": 1, "importeIVA": 0.0, "importeItem": 0.0}]}}
+[2026-02-12 14:46:37] [WSMTXCA_CRITICAL_ERR] {"error": "Missing element codigoConcepto (autorizarComprobanteRequest.comprobanteCAERequest.codigoConcepto)"}
+[2026-02-12 14:47:42] [WSMTXCA_REQ_START] {"cuit_cliente": "30581050301"}
+[2026-02-12 14:47:42] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770918462"}
+[2026-02-12 14:47:42] [TRA_RES] {"service": "wsmtxca", "token_len": 720}
+[2026-02-12 14:47:43] [WSMTXCA_LAST_CMP_ERR] {"error": "La firma no corresponde al token enviado."}
+[2026-02-12 14:47:43] [WSMTXCA_PAYLOAD] {"codigoTipoComprobante": 91, "numeroPuntoVenta": 5, "numeroComprobante": 1, "fechaEmision": "2026-02-12", "codigoTipoDocumento": 80, "numeroDocumento": 30581050301, "codigoConcepto": 1, "importeTotal": 0, "importeSubtotal": 0, "codigoMoneda": "PES", "cotizacionMoneda": 1, "arrayItems": {"item": [{"unidadesMtx": 50, "codigoMtx": "0000000000000", "codigo": "TP001", "descripcion": "Item", "cantidad": 50.0, "codigoUnidadMedida": 7, "precioUnitario": 0.0, "importeBonificacion": 0.0, "codigoCondicionIVA": 1, "importeIVA": 0.0, "importeItem": 0.0}]}}
+[2026-02-12 14:47:43] [WSMTXCA_CRITICAL_ERR] {"error": "La firma no corresponde al token enviado."}
+[2026-02-12 14:49:23] [WSMTXCA_REQ_START] {"cuit_cliente": "30581050301"}
+[2026-02-12 14:49:23] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770918563"}
+[2026-02-12 14:49:24] [TRA_RES] {"service": "wsmtxca", "token_len": 720}
+[2026-02-12 14:49:25] [WSMTXCA_PAYLOAD] {"codigoTipoComprobante": 91, "numeroPuntoVenta": 5, "numeroComprobante": 1, "fechaEmision": "2026-02-12", "codigoTipoDocumento": 80, "numeroDocumento": 30581050301, "codigoConcepto": 1, "importeTotal": 0, "importeSubtotal": 0, "codigoMoneda": "PES", "cotizacionMoneda": 1, "arrayItems": {"item": [{"unidadesMtx": 50, "codigoMtx": "0000000000000", "codigo": "TP001", "descripcion": "Item", "cantidad": 50.0, "codigoUnidadMedida": 7, "precioUnitario": 0.0, "importeBonificacion": 0.0, "codigoCondicionIVA": 1, "importeIVA": 0.0, "importeItem": 0.0}]}}
+[2026-02-12 14:49:25] [WSMTXCA_RESPONSE] {"resultado": "R", "comprobanteResponse": null, "arrayObservaciones": {"codigoDescripcion": [{"codigo": 190, "descripcion": "El campo Condici\u00f3n Frente al IVA del receptor es obligatorio conforme lo reglamentado por la Resoluci\u00f3n General N\u00b0 5616. La Condici\u00f3n deber\u00e1 coincidir con alguno de los valores permitidos: consultar m\u00e9todo consultarCondicionesIVAReceptor"}]}, "arrayErrores": {"codigoDescripcion": [{"codigo": 100, "descripcion": "C\u00f3digo de Tipo de Comprobante inv\u00e1lido"}]}, "evento": {"codigo": 49, "descripcion": "IMPORTANTE: El dia 6 de abril de 2025, se actualizo la version del Web Service (WS) que permite enviar, de forma opcional, el campo Condicion Frente al IVA del receptor. Cabe destacar que la Resolucion General Nro 5616 indica que ese dato debe enviarse de manera obligatoria a partir del 15/04/2025. No obstante, se mantendra como un dato no excluyente hasta el 31/03/2026, inclusive. A partir del 01/04/2026 se rechazaran las solicitudes de emision de comprobantes sin este dato. Para mas informacion, consultar el manual en: https://www.arca.gob.ar/fe/ayuda/webservice.asp, https://www.arca.gob.ar/ws/documentacion/ws-factura-electronica.asp"}}
+[2026-02-12 14:51:35] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770918695"}
+[2026-02-12 14:56:46] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770919006"}
+[2026-02-12 15:01:57] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770919316"}
+[2026-02-12 15:07:07] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770919627"}
+[2026-02-12 15:10:50] [WSMTXCA_REQ_START] {"cuit_cliente": "30581050301"}
+[2026-02-12 15:10:50] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770919850"}
+[2026-02-12 15:10:50] [TRA_RES] {"service": "wsmtxca", "token_len": 720}
+[2026-02-12 15:10:52] [WSMTXCA_PAYLOAD] {"codigoTipoComprobante": 91, "numeroPuntoVenta": 5, "numeroComprobante": 1, "fechaEmision": "2026-02-12", "codigoTipoDocumento": 80, "numeroDocumento": 30581050301, "codigoConcepto": 1, "importeTotal": 0, "importeSubtotal": 0, "codigoMoneda": "PES", "cotizacionMoneda": 1, "arrayItems": {"item": [{"unidadesMtx": 1, "codigoMtx": "0000000000000", "codigo": "TP001", "descripcion": "Item", "cantidad": 1.0, "codigoUnidadMedida": 7, "precioUnitario": 0.0, "importeBonificacion": 0.0, "codigoCondicionIVA": 1, "importeIVA": 0.0, "importeItem": 0.0}]}}
+[2026-02-12 15:10:52] [WSMTXCA_RESPONSE] {"resultado": "R", "comprobanteResponse": null, "arrayObservaciones": {"codigoDescripcion": [{"codigo": 190, "descripcion": "El campo Condici\u00f3n Frente al IVA del receptor es obligatorio conforme lo reglamentado por la Resoluci\u00f3n General N\u00b0 5616. La Condici\u00f3n deber\u00e1 coincidir con alguno de los valores permitidos: consultar m\u00e9todo consultarCondicionesIVAReceptor"}]}, "arrayErrores": {"codigoDescripcion": [{"codigo": 100, "descripcion": "C\u00f3digo de Tipo de Comprobante inv\u00e1lido"}]}, "evento": {"codigo": 49, "descripcion": "IMPORTANTE: El dia 6 de abril de 2025, se actualizo la version del Web Service (WS) que permite enviar, de forma opcional, el campo Condicion Frente al IVA del receptor. Cabe destacar que la Resolucion General Nro 5616 indica que ese dato debe enviarse de manera obligatoria a partir del 15/04/2025. No obstante, se mantendra como un dato no excluyente hasta el 31/03/2026, inclusive. A partir del 01/04/2026 se rechazaran las solicitudes de emision de comprobantes sin este dato. Para mas informacion, consultar el manual en: https://www.arca.gob.ar/fe/ayuda/webservice.asp, https://www.arca.gob.ar/ws/documentacion/ws-factura-electronica.asp"}}
+[2026-02-12 15:12:18] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770919938"}
+[2026-02-12 15:13:17] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770919997"}
+[2026-02-12 15:13:17] [TRA_RES] {"service": "wsmtxca", "token_len": 720}
+[2026-02-12 15:17:28] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770920248"}
+[2026-02-12 15:22:39] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770920559"}
+[2026-02-12 15:23:07] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770920587"}
+[2026-02-12 15:23:07] [TRA_RES] {"service": "wsmtxca", "token_len": 720}
+[2026-02-12 15:25:06] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770920706"}
+[2026-02-12 15:25:07] [TRA_RES] {"service": "wsmtxca", "token_len": 720}
+[2026-02-12 15:27:49] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770920869"}
+[2026-02-12 15:33:00] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770921180"}
+[2026-02-12 15:34:36] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770921276"}
+[2026-02-12 15:34:36] [TRA_RES] {"service": "wsmtxca", "token_len": 720}
+[2026-02-12 15:35:22] [TRA_REQ] {"service": "wsfe", "uniqueId": "1770921322"}
+[2026-02-12 15:38:11] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770921491"}
+[2026-02-12 15:40:12] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770921612"}
+[2026-02-12 15:40:12] [TRA_RES] {"service": "wsmtxca", "token_len": 720}
+[2026-02-12 15:43:21] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770921801"}
+[2026-02-12 15:48:32] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770922112"}
+[2026-02-12 15:53:42] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770922422"}
+[2026-02-12 15:58:53] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770922733"}
+[2026-02-12 16:04:04] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770923044"}
+[2026-02-12 16:09:14] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770923354"}
+[2026-02-12 16:14:25] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770923665"}
+[2026-02-12 16:19:35] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770923975"}
+[2026-02-12 16:24:46] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770924286"}
+[2026-02-12 16:29:57] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770924597"}
+[2026-02-12 16:35:08] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770924908"}
+[2026-02-12 16:40:08] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770925208"}
+[2026-02-12 16:45:19] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770925519"}
+[2026-02-12 16:50:29] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770925829"}
+[2026-02-12 16:55:40] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770926140"}
+[2026-02-12 17:00:51] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770926451"}
+[2026-02-12 17:03:25] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770926605"}
+[2026-02-12 17:03:26] [TRA_RES] {"service": "wsmtxca", "token_len": 720}
+[2026-02-12 17:04:18] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770926658"}
+[2026-02-12 17:04:18] [TRA_RES] {"service": "wsmtxca", "token_len": 720}
+[2026-02-12 17:05:12] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770926711"}
+[2026-02-12 17:05:12] [TRA_RES] {"service": "wsmtxca", "token_len": 720}
+[2026-02-12 17:06:01] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770926761"}
+[2026-02-12 17:08:21] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770926901"}
+[2026-02-12 17:08:21] [TRA_RES] {"service": "wsmtxca", "token_len": 720}
+[2026-02-12 17:11:12] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770927072"}
+[2026-02-12 17:16:22] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770927382"}
+[2026-02-12 17:21:33] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770927693"}
+[2026-02-12 17:26:44] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770928004"}
+[2026-02-12 17:31:54] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770928314"}
+[2026-02-12 17:37:05] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770928625"}
+[2026-02-12 17:42:15] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770928935"}
+[2026-02-12 17:47:26] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770929246"}
+[2026-02-12 17:52:37] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770929557"}
+[2026-02-12 17:57:47] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770929867"}
+[2026-02-12 18:02:58] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770930178"}
+[2026-02-12 18:08:08] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770930488"}
+[2026-02-12 18:13:19] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770930799"}
+[2026-02-12 18:18:30] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770931110"}
+[2026-02-12 18:23:40] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770931420"}
+[2026-02-12 18:28:51] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770931731"}
+[2026-02-12 18:34:01] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770932041"}
+[2026-02-12 18:39:12] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770932352"}
+[2026-02-12 18:44:23] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770932663"}
+[2026-02-12 18:49:33] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770932973"}
+[2026-02-12 18:54:44] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770933284"}
+[2026-02-12 18:59:54] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770933594"}
+[2026-02-12 19:05:05] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770933905"}
+[2026-02-12 19:10:06] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770934206"}
+[2026-02-12 19:15:16] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770934516"}
+[2026-02-12 19:20:27] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770934827"}
+[2026-02-12 19:25:37] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1770935137"}
+[2026-02-19 12:16:58] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1771514218"}
+[2026-02-19 12:16:59] [TRA_RES] {"service": "wsmtxca", "token_len": 720}
+[2026-02-19 12:30:57] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1771515057"}
+[2026-02-19 12:30:58] [TRA_RES] {"service": "wsmtxca", "token_len": 720}
+[2026-02-20 17:06:04] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1771617964"}
+[2026-02-20 17:06:15] [PADRON_ERR] {"error": "Computador no autorizado a acceder al servicio"}
+[2026-02-20 17:22:12] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1771618932"}
+[2026-02-20 17:22:23] [PADRON_ERR] {"error": "Computador no autorizado a acceder al servicio"}
+[2026-02-20 17:26:34] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1771619194"}
+[2026-02-20 17:26:45] [PADRON_ERR] {"error": "Computador no autorizado a acceder al servicio"}
+[2026-02-20 17:32:38] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1771619558"}
+[2026-02-20 17:32:49] [PADRON_ERR] {"error": "Computador no autorizado a acceder al servicio"}
+[2026-02-20 17:36:06] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1771619766"}
+[2026-02-20 17:36:17] [PADRON_ERR] {"error": "Computador no autorizado a acceder al servicio"}
+[2026-02-20 17:40:57] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1771620057"}
+[2026-02-20 17:41:08] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1771620068"}
+[2026-02-20 17:41:08] [TRA_RES] {"service": "wsmtxca", "token_len": 720}
+[2026-02-20 17:41:34] [TRA_REQ] {"service": "ws_sr_padron_a4", "uniqueId": "1771620094"}
+[2026-02-20 17:41:45] [TRA_REQ] {"service": "ws_sr_padron_a5", "uniqueId": "1771620105"}
+[2026-02-20 17:41:56] [TRA_REQ] {"service": "ws_sr_padron_a10", "uniqueId": "1771620115"}
+[2026-02-20 17:42:06] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1771620126"}
+[2026-02-20 17:42:17] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1771620137"}
+[2026-02-20 17:42:18] [TRA_RES] {"service": "wsmtxca", "token_len": 720}
+[2026-02-20 17:42:18] [TRA_REQ] {"service": "wsfe", "uniqueId": "1771620138"}
+[2026-02-20 17:42:40] [TRA_REQ] {"service": "ws_sr_padron_a4", "uniqueId": "1771620160"}
+[2026-02-20 17:42:51] [TRA_REQ] {"service": "ws_sr_padron_a5", "uniqueId": "1771620170"}
+[2026-02-20 17:43:01] [TRA_REQ] {"service": "ws_sr_padron_a10", "uniqueId": "1771620181"}
+[2026-02-20 17:43:12] [TRA_REQ] {"service": "ws_sr_padron_a13", "uniqueId": "1771620192"}
+[2026-02-20 17:43:22] [TRA_REQ] {"service": "wsmtxca", "uniqueId": "1771620202"}
+[2026-02-20 17:43:23] [TRA_RES] {"service": "wsmtxca", "token_len": 720}
+[2026-02-20 17:43:23] [TRA_REQ] {"service": "wsfe", "uniqueId": "1771620203"}
+[2026-02-20 18:02:27] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
+[2026-02-20 18:02:28] [PADRON_REQ] {"cuit_target": "30611306632"}
+[2026-02-20 18:02:28] [WSMTXCA_REQ_START] {"cuit_cliente": "30611306632"}
+[2026-02-20 18:02:28] [TRA_REQ] {"service": "wsmtxca", "cuit": 30715603973}
+[2026-02-20 18:02:29] [WSMTXCA_CRITICAL_ERR] {"error": "too many values to unpack (expected 2)"}
+[2026-02-20 18:06:01] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
+[2026-02-20 18:06:02] [PADRON_REQ] {"cuit_target": "30611306632"}
+[2026-02-20 18:06:18] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
+[2026-02-20 18:06:18] [PADRON_REQ] {"cuit_target": "30611306632"}
+[2026-02-20 18:13:25] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
+[2026-02-20 18:13:25] [PADRON_REQ] {"cuit_target": "30611306632"}

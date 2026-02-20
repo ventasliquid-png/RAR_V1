@@ -12,7 +12,7 @@ COLOR_G = 43
 COLOR_B = 117
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-BG_IMAGE = os.path.join(BASE_DIR, "base_remito_v1.jpg")
+BG_IMAGE = os.path.join(BASE_DIR, "base_remito_v1.png")
 
 class PDFRemito(FPDF):
     def __init__(self, orientation='P', unit='mm', format='A4'):
@@ -21,8 +21,9 @@ class PDFRemito(FPDF):
         self.copy_label = "ORIGINAL"
         self.copy_symbol = "*"
         self.remito_numero = None # Nuevo: Numero de Remito
-        self.factura_vinculada = None # nuevo: Referencia a Factura
-        self.vto_cae = None # nuevo: Vencimiento CAE
+        self.cae = None
+        self.vto_cae = None
+        self.qrcode_url = None
     
     def header(self):
         # 1. Background Image (Full Page)
@@ -41,29 +42,13 @@ class PDFRemito(FPDF):
         self.set_font('Arial', 'B', 10)
         self.set_text_color(COLOR_R, COLOR_G, COLOR_B)
         # 4. Numero de Remito (NUEVO)
-        # 4. Numero de Remito (SIEMPRE MUESTRA EL NÚMERO DE REMITO/DOCUMENTO)
-        # Posición: Caja Superior Derecha "REMITO Nº" (Y=25 por defecto)
+        # Posición: Caja Superior Derecha "REMITO Nº"
+        # Ajuste: Desplazar 3 espacios abajo (aprox 12-15mm). Original Y=13 -> Y=25
         if self.remito_numero:
             self.set_xy(145, 25) 
             self.set_font('Arial', 'B', 16)
             self.set_text_color(COLOR_R, COLOR_G, COLOR_B)
             self.cell(50, 10, self.remito_numero, 0, 0, 'C')
-
-            # [V5] Pseudo-Remito Logic (Factura Vinculada)
-            if self.factura_vinculada:
-                # Título Principal: "DOC. DE TRANSPORTE"
-                current_y = self.get_y()
-                self.set_y(15) 
-                self.set_font('Arial', 'B', 14) 
-                self.cell(0, 5, "DOC. DE TRANSPORTE", 0, 0, 'C')
-                
-                # Sub-bloque: "Corresponde a..." (Debajo del Remito Number)
-                self.set_xy(130, 35) 
-                self.set_font('Arial', '', 6) 
-                self.cell(20, 6, "Corresponde a:", 0, 0, 'R') 
-                
-                self.set_font('Arial', 'B', 10) 
-                self.cell(40, 6, str(self.factura_vinculada), 0, 0, 'L')
 
         # 5. Leyenda Vertical Izquierda (Sobre-escribir imagen)
         # Tapamos lo viejo (Extendemos desde el borde superior hasta abajo para asegurar limpieza)
@@ -88,10 +73,8 @@ class PDFRemito(FPDF):
         # Rotamos 90 grados alrededor del centro aproximado
         # Ajuste manual: Text empieza en x,y. 
         # Probamos colocarlo centrado.
-        # Rotamos 90 grados alrededor del centro aproximado
-        self.rotate(90, 6, 148)
-        self.text(6, 148, f"* ORIGINAL   ** DUPLICADO   *** TRIPLICADO ({self.copy_label})")
-        self.rotate(0)
+        with self.rotation(90, 6, 148):
+            self.text(6, 148, f"* ORIGINAL   ** DUPLICADO   *** TRIPLICADO ({self.copy_label})")
 
         # 7. Símbolos Nuevos (ZapfDingbats)
         # "La estrella del original movela 2 posiciones a la derecha"
@@ -114,8 +97,61 @@ class PDFRemito(FPDF):
         self.set_auto_page_break(original_auto_page_break, self.b_margin)
 
     def footer(self):
-        # Pie de página manejado por coordenadas BAS (L60-62)
-        pass
+        # Bloque de Validación ARCA (30mm altura)
+        
+        if self.qrcode_url and self.cae and self.vto_cae:
+            original_auto_page_break = self.auto_page_break
+            self.set_auto_page_break(False)
+
+            # --- CONFIGURACIÓN ---
+            Y_START = 267      
+            QR_SIZE = 30       # 3x3 cm
+            MARGIN_X = 10      
+            
+            # X posiciones
+            X_QR = MARGIN_X
+            
+            # --- 1. QR (Izquierda) ---
+            qr = qrcode.QRCode(version=1, box_size=10, border=4)
+            qr.add_data(self.qrcode_url)
+            qr.make(fit=True)
+            img = qr.make_image(fill_color="black", back_color="white")
+            
+            with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tmp:
+                img.save(tmp.name)
+                tmp_path = tmp.name
+                
+            self.image(tmp_path, x=X_QR, y=Y_START, w=QR_SIZE, h=QR_SIZE)
+            os.unlink(tmp_path)
+            
+            # --- 2. TEXTOS (Derecha - Justificados) ---
+            # "Mové a la derecha, a la misma posición justificada de CAE Nro y Vto CAE la leyenda Comprobante"
+            # "Dividí la altura del QR en el tope de la altura poné la leyenda del CAE"
+            
+            self.set_font('Arial', 'B', 9)
+            self.set_text_color(0, 0, 0)
+            
+            CELL_W = 60
+            X_POS_RIGHT = 210 - MARGIN_X - CELL_W
+            
+            # 1. CAE N° (Bajar 1 renglón respecto al tope)
+            # Antes: Y_START. Ahora: Y_START + 5
+            self.set_xy(X_POS_RIGHT, Y_START + 5)
+            self.cell(CELL_W, 5, f"CAE N°: {self.cae}", border=0, align='R')
+            
+            # 2. Vto. CAE (Y_START + 10) -> Se mantiene ("Resto OK")
+            # Quedará pegado o con menos margen, pero es lo solicitado.
+            self.set_xy(X_POS_RIGHT, Y_START + 10)
+            self.cell(CELL_W, 5, f"Vto. CAE: {self.vto_cae}", border=0, align='R')
+            
+            # 3. Comprobante Autorizado (Misma posición justificada)
+            # Debajo del Vto.
+            self.set_xy(X_POS_RIGHT, Y_START + 18)
+            self.set_font('Arial', 'I', 8)
+            self.set_text_color(100, 100, 100)
+            self.cell(CELL_W, 4, "Comprobante Autorizado", border=0, align='R')
+            
+            self.set_auto_page_break(original_auto_page_break, self.b_margin)
 
     def add_content(self, cliente_data, items):
         self.add_page()
@@ -249,46 +285,7 @@ class PDFRemito(FPDF):
         bultos_text = str(cliente_data.get('bultos', ''))
         self.cell(20, 5, bultos_text, 0)
 
-        # [V5] Invoice Link (Pie de Página Legal)
-        # [V5] Invoice Link (Pie de Página Legal) + QR
-        if self.factura_vinculada or self.remito_numero:
-             # Generar QR si hay datos oficiales
-             qr_str = f"https://www.afip.gob.ar/fe/qr/?p={self.remito_numero}" # Placeholder valid URL structure
-             
-             # Coords Pie
-             Y_FOOTER = 275
-             
-             # QR Image
-             try:
-                 img = qrcode.make(qr_str)
-                 temp_qr = tempfile.NamedTemporaryFile(suffix='.png', delete=False)
-                 img.save(temp_qr.name)
-                 self.image(temp_qr.name, x=10, y=Y_FOOTER - 5, w=25, h=25)
-                 temp_qr.close()
-                 os.unlink(temp_qr.name)
-             except Exception as e:
-                 pass # Si falla QR, no rompe el PDF
-
-             # Texto Legal
-             # User Request V8: "X = 127"
-             X_LEGALES = 127
-             
-             self.set_xy(X_LEGALES, Y_FOOTER)
-             self.set_font('Arial', 'B', 10)
-             if self.factura_vinculada:
-                self.cell(0, 5, f"VINCULADO A FACTURA: {self.factura_vinculada}", 0, 1, 'L')
-             
-             self.set_x(X_LEGALES)
-             self.set_font('Arial', '', 9)
-             cae_txt = f"CAE: {cliente_data.get('cae', 'N/A')}"
-             vto_txt = f"Vto. CAE: {self.vto_cae if self.vto_cae else 'N/A'}"
-             self.cell(0, 5, f"{cae_txt}    -    {vto_txt}", 0, 1, 'L')
-             
-             self.set_x(X_LEGALES)
-             self.set_font('Arial', 'I', 8)
-             self.cell(0, 5, "Documento de Transporte amparado por Factura Electrónica.", 0, 1, 'L')
-
-def generar_remito_pdf(cliente_data, items, is_preview=False, output_path="remito_final.pdf", numero_remito=None):
+def generar_remito_pdf(cliente_data, items, is_preview=False, output_path="remito_final.pdf", numero_remito=None, cae=None, vto_cae=None, qr_url="www.liquidsound.com.ar"):
     """
     Genera el PDF con las 3 copias.
     numero_remito: string ej "0005-00000001"
@@ -298,16 +295,11 @@ def generar_remito_pdf(cliente_data, items, is_preview=False, output_path="remit
     if numero_remito:
         pdf.remito_numero = numero_remito
     
-    # [V5] Pass Invoice Ref to PDF Object
-    if cliente_data:
-        if cliente_data.get('factura_vinculada'):
-            pdf.factura_vinculada = cliente_data.get('factura_vinculada')
-        if cliente_data.get('vto_cae'):
-            pdf.vto_cae = cliente_data.get('vto_cae')
+    # Datos ARCA
+    pdf.cae = cae
+    pdf.vto_cae = vto_cae
+    pdf.qrcode_url = qr_url
     
-    # Definir Copias
-    if is_preview:
-        copias = [("VISTA PREVIA", "")]
     # Definir Copias
     if is_preview:
         copias = [("VISTA PREVIA", "")]
@@ -328,7 +320,7 @@ def generar_remito_pdf(cliente_data, items, is_preview=False, output_path="remit
     return output_path
 
 class TestRemitoEngine(unittest.TestCase):
-    def test_generacion_full(self):
+    def test_generacion_full_arca(self):
         cli = {
             "razon_social": "LABORATORIO DE MEDICINA SOCIEDAD ANONIMA E INDUSTRIAL",
             "cuit": "30-58105030-1",
@@ -340,32 +332,39 @@ class TestRemitoEngine(unittest.TestCase):
             {"codigo": "1000", "descripcion": "TOALLA SUPER CORTA CAJA POR 2.500 U", "cantidad": 1, "unidad": "UN"}
         ]
         
-        path_prev = generar_remito_pdf(cli, items, is_preview=True, output_path="test_preview_full.pdf", numero_remito="0005-00000001")
+        path_prev = generar_remito_pdf(
+            cli, items, 
+            is_preview=True, 
+            output_path="test_preview_arca.pdf", 
+            numero_remito="0005-00000001",
+            cae="74075191986420",
+            vto_cae="20260222",
+            qr_url="https://www.liquidsound.com.ar"
+        )
         self.assertTrue(os.path.exists(path_prev))
 
-    def test_factura_masked(self):
-        # Datos Reales extraidos de "factura_muestra.pdf" (GALAN SABRINA - 0001-00002487)
+    def test_generacion_final_arca(self):
         cli = {
-            "razon_social": "GALAN SABRINA",
-            "cuit": "30-71560397-3", # CUIT from PDF? Wait, using 'SONIDO LIQUIDO' issuer data for client? No, client data. 
-            # Reviewing extraction: "C.U.I.T.: 30-71560397-3" is visible in header, usually Issuer.
-            # Client usually appears below. 
-            # I will use generic client data but SPECIFIC INVOICE DATA as requested.
-            "domicilio_fiscal": "DOMICILIO REAL DE PRUEBA",
+            "razon_social": "LABORATORIO DE MEDICINA SOCIEDAD ANONIMA E INDUSTRIAL",
+            "cuit": "30-58105030-1",
+            "domicilio_fiscal": "TRELLES MANUEL R. 1566, CIUDAD AUTONOMA BUENOS AIRES (1416)",
             "condicion_iva": "RESPONSABLE INSCRIPTO",
-            "factura_vinculada": "0001-00002487",
-            "cae": "86073791502109",
-            "vto_cae": "23/02/2026"
+            "referencia": "A FACTURAR"
         }
         items = [
-            {"codigo": "SURG-03", "descripcion": "Surgizime O3 botella 1 litro", "cantidad": 18, "unidad": "UN"},
-            {"codigo": "SURG-BAC", "descripcion": "Surgibac PA botella 1 litro", "cantidad": 18, "unidad": "UN"}
+            {"codigo": "1000", "descripcion": "TOALLA SUPER CORTA CAJA POR 2.500 U", "cantidad": 1, "unidad": "UN"}
         ]
         
-        # Generamos PDF "Disfrazado" (V8 Real Data)
-        # Remito Espejo: 0001-00002487 -> 0016-00002487
-        path = generar_remito_pdf(cli, items, is_preview=False, output_path="test_factura_masked_v8.pdf", numero_remito="0016-00002487")
-        self.assertTrue(os.path.exists(path))
+        path_final = generar_remito_pdf(
+            cli, items, 
+            is_preview=False, 
+            output_path="test_final_arca.pdf", 
+            numero_remito="0005-00000001",
+            cae="74075191986420",
+            vto_cae="20260222",
+            qr_url="https://www.liquidsound.com.ar"
+        )
+        self.assertTrue(os.path.exists(path_final))
 
 if __name__ == '__main__':
     unittest.main()

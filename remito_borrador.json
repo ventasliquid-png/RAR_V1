@@ -1,0 +1,23 @@
+{
+    "cliente": {
+        "cuit": "30999999999",
+        "razon_social": "PRUEBA VIRGINIDAD SA",
+        "condicion_iva": "RESPONSABLE INSCRIPTO",
+        "domicilio_fiscal": "AV. SIEMPRE VIVA 742, SPRINGFIELD, LA RIOJA (5300)",
+        "sucursales_json": "[{\"id\": 1, \"direccion\": \"AV. SIEMPRE VIVA 742, SPRINGFIELD, LA RIOJA (5300)\", \"alias\": \"Fiscal\"}]",
+        "codigo_interno": 9999,
+        "referencia": "TEST VANGUARD"
+    },
+    "items": [
+        {
+            "codigo": "SKU-9999",
+            "descripcion": "ITEM DE PRUEBA",
+            "cantidad": "1",
+            "unidad": "UN",
+            "sku": 9999
+        }
+    ],
+    "observaciones": "TEST",
+    "valor_declarado": "0",
+    "timestamp": "2026-02-20T15:40:00"
+}

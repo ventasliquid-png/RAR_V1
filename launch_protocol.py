@@ -7,6 +7,7 @@ import sqlite3
 # Import modules
 from Conexion_Blindada import get_datos_afip, solicitar_cae, LOG_PATH
 from remito_engine import generar_remito_pdf
+from remito_arca_engine import generar_remito_pdf as generar_remito_arca
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, "v5_cantera_oro.db")
@@ -387,11 +388,18 @@ def main():
                 print(f"   CLIENTE: {cliente['razon_social']}")
                 print(f"   ITEMS  : {len(items)}")
                 print("\n1. EMITIR DEFINITIVO (Confirmar)")
+                print("2. GUARDAR EN COLA (Modo Offline / Sin Internet)")
                 print("9. VOLVER AL MENÚ (Corregir)")
                 
                 emit_op = input("\nOpción: ").strip()
                 
-                if emit_op == '1':
+                modo_offline = False
+                if emit_op == '2':
+                    modo_offline = True
+                elif emit_op != '1':
+                    continue
+
+                if not modo_offline:
                     # Check de seguridad
                     seguridad = input(f"CONFIRME N° {proximo_remito} (1=SI / ANY=CANCELAR): ").strip()
                     if seguridad != '1':
@@ -399,14 +407,47 @@ def main():
                         input("Enter para volver al menú...")
                         continue
 
-                    print("Solicitando CAE a AFIP (Simulado)...")
-                    try:
-                        cae_data = solicitar_cae({"cuit": cliente['cuit'], "items": items})
-                        cliente_preview['referencia'] += f"\nCAE: {cae_data['cae']} Vto: {cae_data['vto_cae']}"
+                print(f"Solicitando CAE... (Mode: {'OFFLINE' if modo_offline else 'ONLINE'})")
+                try:
+                    # Pasar flag modo_offline
+                    remito_payload = {"cuit": cliente['cuit'], "items": items, "modo_offline": modo_offline}
+                    cae_data = solicitar_cae(remito_payload)
+                    
+                    resultado = cae_data.get('resultado')
+                    
+                    if resultado == 'A' or resultado == 'Q':
+                        # Éxito ARCA (A) o Cola (Q)
+                        cae = cae_data['cae']
+                        vto = cae_data['vto_cae']
+                        qr_url = cae_data.get('qr_url')
+                        nuevo_numero = cae_data.get('numero_comprobante', proximo_remito) 
                         
-                        pdf_final = generar_remito_pdf(cliente_preview, items, is_preview=False, output_path="remito_final_legal.pdf", numero_remito=proximo_remito)
-                        print(f"\n✅ REMITO {proximo_remito} EMITIDO: {pdf_final}")
+                        # Si es Q (Cola), el numero es 0 o dummy. Usamos el propuesto?
+                        # Mejor usar "PENDIENTE" en el nombre si es cola
+                        if resultado == 'Q':
+                            nombre_archivo = f"REMITO_PENDIENTE_{datetime.now().strftime('%H%M%S')}.pdf"
+                        else:
+                            nombre_archivo = f"REMITO_{nuevo_numero}.pdf"
+                        
+                        pdf_final = generar_remito_arca(
+                            cliente_preview, items, 
+                            is_preview=False, 
+                            output_path=nombre_archivo, 
+                            numero_remito=str(nuevo_numero) if resultado == 'A' else "PENDIENTE",
+                            cae=cae,
+                            vto_cae=vto,
+                            qr_url=qr_url
+                        )
+                        
+                        if resultado == 'Q':
+                            print(f"\n📁 REMITO GUARDADO EN COLA (OFFLINE): {pdf_final}")
+                        else:
+                            print(f"\n✅ REMITO LEGAL {nuevo_numero} EMITIDO: {pdf_final}")
+                            
                         if os.name == 'nt': os.startfile(pdf_final)
+                    else:
+                        # Rechazo
+                        raise Exception(f"AFIP RECHAZO: {cae_data.get('error', 'Desconocido')}")
                         
                         if os.path.exists("remito_borrador.json"):
                             os.remove("remito_borrador.json")
