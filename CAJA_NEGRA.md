@@ -29,6 +29,6 @@
 2.  **[SOLUCIONADO] Backend Crash:** Inconsistencia de DB resuelta via Swap.
 
 ## ÚLTIMA MODIFICACIÓN
-*   **Fecha:** 20/02/2026
-*   **Agente:** Antigravity / Gy V12
-*   **Razón:** Estabilización Crítica de Backend y Puente Multi-Identidad.
+*   **Fecha:** 23/02/2026
+*   **Agente:** Antigravity / Gy V14
+*   **Razón:** Hotfix `rar_core.py` (NoneType en formaJuridica por Secreto Fiscal) en V5 FastAPI.

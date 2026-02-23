@@ -68,7 +68,7 @@ def extraer_datos_completos(json_afip):
              iva_status = "EXENTO"
     else:
         # Intento 2: Heurística por Forma Jurídica
-        forma_juridica = datos.get('formaJuridica', '').upper()
+        forma_juridica = (datos.get('formaJuridica') or '').upper()
         if "SOC. ANONIMA" in forma_juridica or "S.A." in forma_juridica or "S.R.L." in forma_juridica:
             iva_status = "RESPONSABLE INSCRIPTO"
 

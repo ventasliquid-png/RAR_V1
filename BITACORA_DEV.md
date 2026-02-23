@@ -1,4 +1,14 @@
 
+### FECHA: 23/02/2026 - HOTFIX CUIT PERSONAS FÍSICAS (SECRETO FISCAL)
+
+**ESTADO ACTUAL:** 🟢 OPERATIVO
+
+**ACTIVIDADES REALIZADAS:**
+1.  **Diagnóstico AFIP:** Se detectó que el padrón A13 oculta intencionalmente la `formaJuridica` y detalles impositivos para Personas Físicas (Cuit 20, 23, 24, 27) devolviendo `null`.
+2.  **Resolución (RAR Core):** Se protegió el método `extraer_datos_completos` en `rar_core.py` para manejar el `NoneType` de `formaJuridica` antes de aplicarle `.upper()`, previniendo la caída de la API V5 (`FastAPI`) con error 500.
+
+---
+
 ### FECHA: 12/02/2026 - SESIÓN DE IMPLEMENTACIÓN WSMTXCA (FASE 2)
 
 **ESTADO ACTUAL:** 🛑 BLOQUEADO (ADMINISTRATIVO - NO TÉCNICO)
