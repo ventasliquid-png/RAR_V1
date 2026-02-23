@@ -10,11 +10,11 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 IDENTIDADES = {
     "padron": {
         "cuit": 20132967572,
-        "cert": os.path.join(BASE_DIR, "certs", "certificado_06_02_2026.crt")
+        "cert": os.path.join(BASE_DIR, "certs", "certificado.crt")
     },
     "fiscal": {
         "cuit": 30715603973,
-        "cert": os.path.join(BASE_DIR, "certs", "certificado.crt")
+        "cert": os.path.join(BASE_DIR, "certs", "sonidoliquido.crt") # Dejamos este como placeholder si no existe
     }
 }
 KEY_PATH = os.path.join(BASE_DIR, "certs", "privada.key")
@@ -22,7 +22,7 @@ URL_WSAA = "https://wsaa.afip.gov.ar/ws/services/LoginCms?wsdl"
 URL_PADRON = "https://aws.afip.gov.ar/sr-padron/webservices/personaServiceA13?wsdl"
 URL_WSMTXCA = "https://serviciosjava.afip.gov.ar/wsmtxca/services/MTXCAService?wsdl"
 LOG_PATH = os.path.join(BASE_DIR, "arca_trace.log")
-
+CACHE_PATH = os.path.join(BASE_DIR, "token_cache.json")
 def log_arca_trace(tipo, datos):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     with open(LOG_PATH, "a") as f:
@@ -35,6 +35,24 @@ def obtener_token(service="ws_sr_padron_a13"):
     cuit_propio = identity["cuit"]
     cert_path = identity["cert"]
 
+    # --- 1. INTENTO DE CARGA DESDE CACHÉ (LUPA VELOZ) ---
+    try:
+        import json
+        if os.path.exists(CACHE_PATH):
+            with open(CACHE_PATH, "r") as f:
+                cache = json.load(f)
+            
+            if service in cache:
+                s_data = cache[service]
+                exp = datetime.fromisoformat(s_data["expiration"])
+                # Margen de seguridad de 10 minutos
+                if datetime.now() < exp - timedelta(minutes=10):
+                    log_arca_trace("CACHE_HIT", {"service": service})
+                    return s_data["token"], s_data["sign"], cuit_propio
+    except Exception as e:
+        log_arca_trace("CACHE_ERR", {"error": str(e)})
+
+    # --- 2. GENERACIÓN DE NUEVO TA ---
     rutas = [r"C:\Program Files\Git\usr\bin\openssl.exe", r"C:\Program Files\Git\mingw64\bin\openssl.exe", r"C:\Windows\System32\openssl.exe"]
     openssl = next((r for r in rutas if os.path.exists(r)), None)
     
@@ -53,16 +71,19 @@ def obtener_token(service="ws_sr_padron_a13"):
     etree.SubElement(h, "expirationTime").text = (now + timedelta(minutes=10)).strftime("%Y-%m-%dT%H:%M:%S")
     etree.SubElement(tra, "service").text = service
     
-    temp_xml = os.path.join(BASE_DIR, f"temp_auth_{service}.xml")
-    temp_cms = os.path.join(BASE_DIR, f"temp_auth_{service}.cms")
+    # UUID para evitar colisiones
+    import uuid
+    uid = str(uuid.uuid4())[:8]
+    temp_xml = os.path.join(BASE_DIR, f"temp_auth_{service}_{uid}.xml")
+    temp_cms = os.path.join(BASE_DIR, f"temp_auth_{service}_{uid}.cms")
 
     with open(temp_xml, "wb") as f: f.write(etree.tostring(tra))
     
     try:
-        subprocess.run(f'"{openssl}" cms -sign -in "{temp_xml}" -out "{temp_cms}" -signer "{cert_path}" -inkey "{KEY_PATH}" -nodetach -outform DER', shell=True, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    except subprocess.CalledProcessError:
+        result = subprocess.run(f'"{openssl}" cms -sign -in "{temp_xml}" -out "{temp_cms}" -signer "{cert_path}" -inkey "{KEY_PATH}" -nodetach -outform DER', shell=True, check=True, capture_output=True, text=True)
+    except subprocess.CalledProcessError as e:
         if os.path.exists(temp_xml): os.remove(temp_xml)
-        raise Exception(f"Error firmando solicitud {service} con certificado {cert_path}")
+        raise Exception(f"Error firmando solicitud {service} con certificado {cert_path}. STMT: {e.stderr}")
 
     with open(temp_cms, "rb") as f: cms = base64.b64encode(f.read()).decode()
     
@@ -79,6 +100,26 @@ def obtener_token(service="ws_sr_padron_a13"):
     token = xml.find(".//token").text
     sign = xml.find(".//sign").text
     
+    # --- 3. GUARDAMOS EN CACHÉ (LUPA VELOZ) ---
+    expiration_time = (now + timedelta(hours=11, minutes=50)).isoformat()
+    try:
+        cache = {}
+        if os.path.exists(CACHE_PATH):
+            with open(CACHE_PATH, "r") as f:
+                cache = json.load(f)
+        
+        cache[service] = {
+            "token": token,
+            "sign": sign,
+            "expiration": expiration_time
+        }
+        
+        import json
+        with open(CACHE_PATH, "w") as f:
+            json.dump(cache, f)
+    except Exception as e:
+        log_arca_trace("CACHE_SAVE_ERR", {"error": str(e)})
+
     return token, sign, cuit_propio
 
 def get_datos_afip(cuit_raw):

@@ -246,3 +246,15 @@
 [2026-02-20 18:06:18] [PADRON_REQ] {"cuit_target": "30611306632"}
 [2026-02-20 18:13:25] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
 [2026-02-20 18:13:25] [PADRON_REQ] {"cuit_target": "30611306632"}
+[2026-02-21 20:03:22] [PADRON_ERR] {"error": "Error firmando solicitud ws_sr_padron_a13 con certificado C:\\dev\\RAR_V1\\certs\\certificado_06_02_2026.crt"}
+[2026-02-21 20:41:30] [PADRON_ERR] {"error": "Error firmando solicitud ws_sr_padron_a13 con certificado C:\\dev\\RAR_V1\\certs\\certificado_06_02_2026.crt"}
+[2026-02-21 20:42:09] [PADRON_ERR] {"error": "Error firmando solicitud ws_sr_padron_a13 con certificado C:\\dev\\RAR_V1\\certs\\rarv1.crt"}
+[2026-02-21 21:13:36] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
+[2026-02-21 21:15:47] [CACHE_HIT] {"service": "ws_sr_padron_a13"}
+[2026-02-21 21:15:47] [PADRON_REQ] {"cuit_target": "33660726859"}
+[2026-02-21 23:57:16] [CACHE_HIT] {"service": "ws_sr_padron_a13"}
+[2026-02-21 23:57:16] [PADRON_REQ] {"cuit_target": "30709522066"}
+[2026-02-21 23:58:22] [CACHE_HIT] {"service": "ws_sr_padron_a13"}
+[2026-02-21 23:58:22] [PADRON_REQ] {"cuit_target": "30709522066"}
+[2026-02-22 21:50:36] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
+[2026-02-22 21:50:37] [PADRON_REQ] {"cuit_target": "30536602913"}
