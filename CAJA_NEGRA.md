@@ -20,8 +20,8 @@
 | **Conexión (WSMTXCA)** | 🟢 OPERATIVO | Token OK. Comunicación fiscal validada. |
 | **Punto de Venta** | 🟡 PENDIENTE | Pendiente delegación REAR (Inhibido por administrativo). |
 | **Buscador CUIT** | 🟢 OPERATIVO | Restaurado vía Identidad 20132967572. |
-| **Motor PDF (ARCA)** | 🟢 LISTO | `remito_arca_engine.py` genera PDF+QR. Falta CAE real. |
-| **Backend V5** | 🟢 ESTABLE | `pilot.db` 100% íntegra (Threshold 33). |
+| **Motor PDF (ARCA)** | 🟢 OPERATIVO | `remito_engine.py` re-escrito a JPG Base. Descarga URL Activa. |
+| **Backend V5** | 🟢 ESTABLE | `pilot.db` 100% íntegra (Threshold 33). Sync Completada. |
 | **Protocolo Omega** | 🟢 ACTIVO | Procedimiento de cierre en curso. |
 
 ## ALERTAS ACTIVAS
@@ -29,6 +29,6 @@
 2.  **[SOLUCIONADO] Backend Crash:** Inconsistencia de DB resuelta via Swap.
 
 ## ÚLTIMA MODIFICACIÓN
-*   **Fecha:** 23/02/2026
+*   **Fecha:** 24/02/2026
 *   **Agente:** Antigravity / Gy V14
-*   **Razón:** Hotfix `rar_core.py` (NoneType en formaJuridica por Secreto Fiscal) en V5 FastAPI.
+*   **Razón:** Fix crítico en Motor PDF por Timeout de Memoria (PNG a JPG) y sincronización total de descarga remota.

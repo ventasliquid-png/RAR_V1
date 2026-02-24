@@ -285,3 +285,7 @@
 [2026-02-23 19:28:40] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
 [2026-02-23 19:32:14] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
 [2026-02-23 19:32:15] [PADRON_REQ] {"cuit_target": "27304037976"}
+[2026-02-24 11:51:03] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
+[2026-02-24 11:51:04] [PADRON_REQ] {"cuit_target": "20295915863"}
+[2026-02-24 16:39:34] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
+[2026-02-24 16:39:34] [PADRON_REQ] {"cuit_target": "30709315346"}
