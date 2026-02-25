@@ -11,6 +11,7 @@
 - [x] Resolver Circular Import / Model Registry en V5 Backend.
 - [x] Implementar Puente Multi-Identidad (CUIT 20/30).
 - [x] Corregir persistencia de Infiltración Vanguard.
+- [x] Refinar robustez ante NoneType en padrón A13 (Coalix Fix).
 
 > **ESTADO GLOBAL:** 🟢 OPERATIVO (Backend V5 Restaurado)
 
@@ -29,6 +30,6 @@
 2.  **[SOLUCIONADO] Backend Crash:** Inconsistencia de DB resuelta via Swap.
 
 ## ÚLTIMA MODIFICACIÓN
-*   **Fecha:** 24/02/2026
+*   **Fecha:** 25/02/2026
 *   **Agente:** Antigravity / Gy V14
-*   **Razón:** Fix crítico en Motor PDF por Timeout de Memoria (PNG a JPG) y sincronización total de descarga remota.
+*   **Razón:** Estabilización de Ingesta y Bridge V5/RAR (Caso Coalix). Refuerzo de esquemas de persistencia anidada en el cliente principal.

@@ -289,3 +289,13 @@
 [2026-02-24 11:51:04] [PADRON_REQ] {"cuit_target": "20295915863"}
 [2026-02-24 16:39:34] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
 [2026-02-24 16:39:34] [PADRON_REQ] {"cuit_target": "30709315346"}
+[2026-02-25 10:24:38] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
+[2026-02-25 10:24:39] [PADRON_REQ] {"cuit_target": "27205679427"}
+[2026-02-25 12:15:59] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
+[2026-02-25 12:16:00] [PADRON_REQ] {"cuit_target": "27311111111"}
+[2026-02-25 12:48:18] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
+[2026-02-25 12:48:19] [PADRON_REQ] {"cuit_target": "27304037976"}
+[2026-02-25 16:50:44] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
+[2026-02-25 16:50:44] [PADRON_REQ] {"cuit_target": "30709522066"}
+[2026-02-25 17:19:17] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
+[2026-02-25 17:19:17] [PADRON_REQ] {"cuit_target": "30709522066"}

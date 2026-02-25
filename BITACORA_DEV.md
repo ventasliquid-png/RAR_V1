@@ -1,4 +1,13 @@
 
+### FECHA: 25/02/2026 - ESTABILIZACIÓN BRIDGE V5 (REMITOS & COALIX)
+**ESTADO ACTUAL:** 🟢 OPERATIVO GOLD
+**ACTIVIDADES REALIZADAS:**
+1. **Sincronización Sistémica:** Se verificó la operatividad del bridge desde `Sonido_Liquido_V5`.
+2. **Robustez Fiscal:** Se confirmó que la lógica de preservación de Condición IVA para Personas Físicas (evitando el Secreto Fiscal de AFIP) funciona correctamente en conjunto con el parser de remitos.
+3. **Escudo de Persistencia:** Colaboración en el refactor del esquema de Clientes en V5 para asegurar que los datos inyectados por el satellite RAR persistan correctamente en la base de datos (Fix Case Coalix).
+
+---
+
 ### FECHA: 23/02/2026 - HOTFIX CUIT PERSONAS FÍSICAS (SECRETO FISCAL)
 
 **ESTADO ACTUAL:** 🟢 OPERATIVO
