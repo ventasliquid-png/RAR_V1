@@ -10,9 +10,10 @@
 3.  *Si esto falla, ABORTAR INICIO.*
 
 ## FASE 1: SINCRONIZACIÓN DE ADN (GIT)
-1.  `git fetch origin`
-2.  `git pull`
-3.  **Confirmar:** "El código local es idéntico al del repositorio remoto".
+> **NUEVA DIRECTIVA V14:** El `.bat` de inicio (`DESPERTAR_AMBOS` o `DESPERTAR_RAR`) ya se encarga de preguntar y ejecutar `git pull`. 
+> **PROHIBICIÓN ESTRICTA:** La IA (Gy) **NO DEBE** ejecutar comandos `git fetch` o `git pull` de forma autónoma durante el arranque.
+1.  **Asumir:** El código local ya está en la versión deseada por el Operador.
+2.  **Confirmar:** Solo verificar con `git status` si hay ramas pendientes o divergencias *solo si se sospecha un error*, pero **NUNCA** hacer pull sin orden explícita.
 
 ## FASE 2: PRUEBA DE HUMO (SMOKE TEST)
 **Objetivo:** Verificar que estamos conectados a la base de datos correcta.
