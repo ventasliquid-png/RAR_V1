@@ -258,3 +258,20 @@
 [2026-02-21 23:58:22] [PADRON_REQ] {"cuit_target": "30709522066"}
 [2026-02-22 21:50:36] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
 [2026-02-22 21:50:37] [PADRON_REQ] {"cuit_target": "30536602913"}
+[2026-02-26 18:14:32] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
+[2026-02-26 18:14:43] [PADRON_ERR] {"error": "DN del Source invalido. Valor recibido: 2.5.4.5=#131043554954203230313332393637353732,cn=rar_v5 valor esperado: 2.5.4.5=#131043554954203330373135363033393733,cn=rar_v5"}
+[2026-02-26 18:17:07] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
+[2026-02-26 18:17:37] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 30715603973}
+[2026-02-26 19:03:54] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 30715603973}
+[2026-02-26 19:05:53] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 30715603973}
+[2026-02-26 19:08:22] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 30715603973}
+[2026-02-26 19:08:58] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 30715603973}
+[2026-02-26 19:10:41] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
+[2026-02-26 19:11:03] [CACHE_HIT] {"service": "ws_sr_padron_a13"}
+[2026-02-26 19:11:19] [CACHE_HIT] {"service": "ws_sr_padron_a13"}
+[2026-02-26 19:11:19] [CACHE_HIT] {"service": "ws_sr_padron_a13"}
+[2026-02-26 19:11:19] [PADRON_REQ] {"cuit_target": "30715603973"}
+[2026-02-26 19:18:31] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
+[2026-02-26 19:18:32] [TRA_REQ] {"service": "wsmtxca", "cuit": 30715603973}
+[2026-02-26 19:18:32] [CACHE_HIT] {"service": "ws_sr_padron_a13"}
+[2026-02-26 19:18:32] [PADRON_REQ] {"cuit_target": "30536602913"}

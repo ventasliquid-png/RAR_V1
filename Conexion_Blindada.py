@@ -9,12 +9,12 @@ from rar_core import extraer_datos_completos
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 IDENTIDADES = {
     "padron": {
-        "cuit": 20132967572,
-        "cert": os.path.join(BASE_DIR, "certs", "certificado.crt")
+        "cuit": 20132967572, 
+        "cert": os.path.join(BASE_DIR, "certs", "certificado_06_02_2026.crt")
     },
     "fiscal": {
         "cuit": 30715603973,
-        "cert": os.path.join(BASE_DIR, "certs", "sonidoliquido.crt") # Dejamos este como placeholder si no existe
+        "cert": os.path.join(BASE_DIR, "certs", "certificado.crt")
     }
 }
 KEY_PATH = os.path.join(BASE_DIR, "certs", "privada.key")
@@ -62,7 +62,8 @@ def obtener_token(service="ws_sr_padron_a13"):
     now = datetime.now()
     tra = etree.Element("loginTicketRequest", version="1.0")
     h = etree.SubElement(tra, "header")
-    # Nota: El cn en source a veces es sensible, alternamos entre rar_v5 y RAR_V5 según cert
+    # AFIP es estricto con el alias (CN) del certificado. 
+    # El personal (padron) es 'RAR_V5', el de empresa (fiscal) es 'rar_v5'.
     cn_name = "RAR_V5" if id_key == "padron" else "rar_v5"
     etree.SubElement(h, "source").text = f"serialNumber=CUIT {cuit_propio},cn={cn_name}"
     etree.SubElement(h, "destination").text = "cn=wsaa,o=afip,c=ar,serialNumber=CUIT 33693450239"
