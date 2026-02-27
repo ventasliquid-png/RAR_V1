@@ -81,3 +81,15 @@
 
 **Estado:** Sincronizado y listo para emisión de remitos.
 
+---
+
+### FECHA: 27/02/2026 - OPEACIÓN SABUESO PDF (PORTING V5)
+**ESTADO ACTUAL:** 🟢 OPERATIVO GOLD
+
+**ACTIVIDADES REALIZADAS:**
+1.  **Paridad Sistémica:** Migración final y estabilización de la lógica heurística (`pdf_parser.py`) desde este satélite (RAR) hacia el núcleo logístico en V5.
+2.  **Hardening Lexical:** El motor PDF local se mejoró introduciendo Regex predictivo (`Lookahead`) esquivando la corrupción léxica originada por el formato tabular de las facturas AFIP.
+3.  **Tests Superados:** Scritps `debug_regex.py` locales ejecutados sin desbordes.
+
+**Estado:** Motor PDF asimilado por V5. Satélite RAR queda en espera activa para misiones WSMTXCA.
+
