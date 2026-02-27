@@ -22,13 +22,13 @@
 | **Buscador CUIT** | 🟢 OPERATIVO | Restaurado vía Identidad 20132967572. |
 | **Motor PDF (ARCA)** | 🟢 LISTO | `remito_arca_engine.py` genera PDF+QR. Falta CAE real. |
 | **Backend V5** | 🟢 ESTABLE | `pilot.db` 100% íntegra (Threshold 33). |
-| **Protocolo Omega** | 🟢 ACTIVO | Procedimiento de cierre en curso. |
+| **Protocolo Omega** | 🟢 FINALIZADO | Sesión 785 cerrada con sincronización Multiplex. |
 
 ## ALERTAS ACTIVAS
 1.  **[CRÍTICO] Error Burocrático:** Falta DDJJ Ganancias 2024 impide alta de PV.
 2.  **[SOLUCIONADO] Backend Crash:** Inconsistencia de DB resuelta via Swap.
 
 ## ÚLTIMA MODIFICACIÓN
-*   **Fecha:** 26/02/2026
+*   **Fecha:** 27/02/2026 (00:15)
 *   **Agente:** Antigravity / Gy V14
-*   **Razón:** Estabilización de Identidad Dual (CUIT 20/30) y alias Case-Sensitive.
+*   **Razón:** Cierre de Sesión 785. Sincronización CASA-OFICINA y paridad Git Verificada.
