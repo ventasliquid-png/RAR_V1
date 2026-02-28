@@ -10,7 +10,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 IDENTIDADES = {
     "padron": {
         "cuit": 20132967572, 
-        "cert": os.path.join(BASE_DIR, "certs", "certificado_06_02_2026.crt")
+        "cert": os.path.join(BASE_DIR, "certs", "certificado.crt")
     },
     "fiscal": {
         "cuit": 30715603973,

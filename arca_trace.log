@@ -275,3 +275,20 @@
 [2026-02-26 19:18:32] [TRA_REQ] {"service": "wsmtxca", "cuit": 30715603973}
 [2026-02-26 19:18:32] [CACHE_HIT] {"service": "ws_sr_padron_a13"}
 [2026-02-26 19:18:32] [PADRON_REQ] {"cuit_target": "30536602913"}
+[2026-02-27 22:11:48] [PADRON_ERR] {"error": "Error firmando solicitud ws_sr_padron_a13 con certificado C:\\dev\\RAR_V1\\certs\\certificado_06_02_2026.crt. STMT: Could not open file or uri for loading signer certificate from C:\\dev\\RAR_V1\\certs\\certificado_06_02_2026.crt\n100000000A000000:error:80000002:system library:file_open:No such file or directory:providers/implementations/storemgmt/file_store.c:263:calling stat(C:\\dev\\RAR_V1\\certs\\certificado_06_02_2026.crt)\n100000000A000000:error:1608010C:STORE routines:inner_loader_fetch:unsupported:crypto/store/store_meth.c:360:No store loader found. For standard store loaders you need at least one of the default or base providers available. Did you forget to load them? Info: Global default library context, Scheme (C : 0), Properties (<null>)\n"}
+[2026-02-27 22:24:49] [PADRON_ERR] {"error": "Error firmando solicitud ws_sr_padron_a13 con certificado C:\\dev\\RAR_V1\\certs\\certificado_06_02_2026.crt. STMT: Could not open file or uri for loading signer certificate from C:\\dev\\RAR_V1\\certs\\certificado_06_02_2026.crt\n100000000A000000:error:80000002:system library:file_open:No such file or directory:providers/implementations/storemgmt/file_store.c:263:calling stat(C:\\dev\\RAR_V1\\certs\\certificado_06_02_2026.crt)\n100000000A000000:error:1608010C:STORE routines:inner_loader_fetch:unsupported:crypto/store/store_meth.c:360:No store loader found. For standard store loaders you need at least one of the default or base providers available. Did you forget to load them? Info: Global default library context, Scheme (C : 0), Properties (<null>)\n"}
+[2026-02-27 22:25:37] [PADRON_ERR] {"error": "Error firmando solicitud ws_sr_padron_a13 con certificado C:\\dev\\RAR_V1\\certs\\certificado_06_02_2026.crt. STMT: Could not open file or uri for loading signer certificate from C:\\dev\\RAR_V1\\certs\\certificado_06_02_2026.crt\n100000000A000000:error:80000002:system library:file_open:No such file or directory:providers/implementations/storemgmt/file_store.c:263:calling stat(C:\\dev\\RAR_V1\\certs\\certificado_06_02_2026.crt)\n100000000A000000:error:1608010C:STORE routines:inner_loader_fetch:unsupported:crypto/store/store_meth.c:360:No store loader found. For standard store loaders you need at least one of the default or base providers available. Did you forget to load them? Info: Global default library context, Scheme (C : 0), Properties (<null>)\n"}
+[2026-02-27 22:26:39] [TRA_REQ] {"service": "ws_sr_padron_a13", "cuit": 20132967572}
+[2026-02-27 22:26:40] [PADRON_REQ] {"cuit_target": "30709315346"}
+[2026-02-27 22:31:42] [CACHE_HIT] {"service": "ws_sr_padron_a13"}
+[2026-02-27 22:31:42] [PADRON_REQ] {"cuit_target": "30709315346"}
+[2026-02-27 22:46:47] [CACHE_HIT] {"service": "ws_sr_padron_a13"}
+[2026-02-27 22:46:47] [PADRON_REQ] {"cuit_target": "30709315346"}
+[2026-02-27 23:04:56] [CACHE_HIT] {"service": "ws_sr_padron_a13"}
+[2026-02-27 23:04:56] [PADRON_REQ] {"cuit_target": "30710847343"}
+[2026-02-27 23:12:45] [CACHE_HIT] {"service": "ws_sr_padron_a13"}
+[2026-02-27 23:12:45] [PADRON_REQ] {"cuit_target": "30709315346"}
+[2026-02-27 23:35:35] [CACHE_HIT] {"service": "ws_sr_padron_a13"}
+[2026-02-27 23:35:35] [PADRON_REQ] {"cuit_target": "30709522066"}
+[2026-02-28 00:10:58] [CACHE_HIT] {"service": "ws_sr_padron_a13"}
+[2026-02-28 00:10:58] [PADRON_REQ] {"cuit_target": "30709315346"}
