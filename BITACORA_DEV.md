@@ -97,3 +97,14 @@
 
 **Estado:** Motor PDF asimilado por V5. Satélite RAR queda en espera activa para misiones WSMTXCA.
 
+
+### FECHA: 05/03/2026 - TRASPLANTE PROTOCOLO ALFA A V5
+**ESTADO ACTUAL:** 🟢 OPERATIVO GOLD (STABLE)
+
+**ACTIVIDADES REALIZADAS:**
+1. **Trasplante Alfa**: Se portaron y sellaron las características de Sabueso Oro (Heurística de extracción de PDFs de ARCA) y renderizado de Remitos con QR/CAE/Página 1 al núcleo V5.
+2. **Generación Operativa**: Se generaron los remitos 2497 (GELATO SA) y 2498 (LACTEOS DE POBLET SA) directamente en V5 usando la lógica asimilada.
+3. **Validación de Identidad**: Verificada Estabilidad DB (436 KB) y Doctrina 4-Bytes aplicada en el sellado final.
+4. **Hardening**: Ajuste de `check_db_integrity.py` en V5 para soportar UUIDs sin romper el código secreto de integridad.
+
+**Estado:** Misión Multiplex CERRADA. Sello Git en ambas ramas.
