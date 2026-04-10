@@ -6,8 +6,8 @@
 ## FASE 1: DOCUMENTACIÓN (BUROCRACIA DE MEMORIA)
 1.  **Bitácora:** Registrar hitos, errores y soluciones en `BITACORA_DEV.md`.
 2.  **Caja Negra:** Actualizar estado de módulos en `CAJA_NEGRA.md`.
-3.  **Informe Histórico:** Generar `INFORME_SESION_[FECHA].md`.
-4.  *Sin informe, no hay cierre.*
+3.  **Informe Histórico:** Generar `YYYY-MM-DD_INFORME_SESION_...` y guardarlo en `INFORMES_HISTORICOS/`.
+4.  *Sin informe en históricos, no hay cierre.*
 
 ## FASE 2: VERIFICACIÓN TÉCNICA
 1.  **Consistencia de 32 Bits:** Verificar que las tablas críticas (`clientes`, `productos`, `pedidos`) tengan la columna `flags_estado`.
@@ -19,12 +19,12 @@
     `git branch backup/YYYYMMDD_HHMM_cierre`
 2.  **Objetivo:** Crear una "caja negra" inmutable del estado actual.
 
-## FASE 4: CRIPTOGRAFÍA DE CIERRE
-1.  **Git Status:** Revisar cambios pendientes.
-2.  **PIN 1974:** El operador HUMANO debe autorizar explícitamente el cierre con el código "1974".
+## FASE 4: CRIPTOGRAFÍA DE CIERRE (ABORDAJE COMPLETO)
+1.  **Paso Crítico**: `git add .` para indexar informes históricos.
+2.  **Visualización**: `git status` para auditoría previa.
+3.  **PIN 1974:** El operador HUMANO debe autorizar explícitamente el cierre con el código "1974".
     *   *Sin el PIN, el sistema permanece abierto.*
-3.  **Commit Final:** "Protocolo Omega: [Resumen de Misión]".
-4.  **Push:** Enviar a remoto.
+4.  **Sello**: `git commit -m "Omega: [Resumen de Misión]"` seguido de `git push`.
 
 ---
 *Firma: Gy (Antigravity)*
